@@ -16,10 +16,10 @@ import { ScrollArea } from '../ui/scroll-area';
 const Navbar = () => {
   return (
     <nav
-      className='flex fixed w-full h-16 top-0 justify-between items-center px-6 md:px-12 text-gray-400 shadow-sm font-mono z-50'
+      className='flex flex-col fixed w-full h-16 top-0 justify-center px-6 md:px-12 text-gray-400 shadow-sm font-mono z-50 backdrop-blur'
       role='navigation'
     >
-      <NavigationMenu className=''>
+      <NavigationMenu className='z-50'>
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger>
@@ -110,7 +110,7 @@ const Contact = () => {
 const Expertise = () => {
   return (
     <NavigationMenuContent className=''>
-    <ScrollArea className='h-[calc(100vh-10rem)] md:h-auto w-auto'>
+      <ScrollArea className='h-[calc(100vh-10rem)] md:h-auto w-auto'>
         <div className='p-6 flex flex-col gap-8 max-w-[calc(100vw-4rem)]'>
           <div className='flex flex-col md:flex-row gap-8'>
             <div className='flex gap-8 items-stretch'>
@@ -121,7 +121,7 @@ const Expertise = () => {
                 <li>
                   <h1 className=''>Solidworks</h1>
                   <p className='text-sm text-[#a3a3a3]'>
-                    Powerful 3D design software for 3D design and drawing
+                    Powerful 3D design software for 3D modeling and drawing
                   </p>
                 </li>
               </ul>
@@ -142,6 +142,13 @@ const Expertise = () => {
                   <h1 className=''>Next JS</h1>
                   <p className='text-sm text-[#a3a3a3]'>
                     Fullstack web framework based on React
+                  </p>
+                </li>
+                <Separator />
+                <li>
+                  <h1 className=''>SQL</h1>
+                  <p className='text-sm text-[#a3a3a3]'>
+                    Standard language for relational database management
                   </p>
                 </li>
               </ul>
@@ -180,7 +187,7 @@ const Expertise = () => {
           </div>
         </div>
       </ScrollArea>
-      </NavigationMenuContent>
+    </NavigationMenuContent>
   );
 };
 

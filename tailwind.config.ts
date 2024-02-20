@@ -27,11 +27,34 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "typing": {
+          from: { width: "0" },
+          to: { width: "100%" },
+        },
+        "blink-caret": {
+          from: { borderColor: "transparent" },
+          "50%": { borderColor: "theme('colors.teal.500')" },
+          to: { borderColor: "transparent" },
+        },
+        "scroll-watcher": {
+          to: {scale: "1 1"}
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        typing: "typing 4s steps(40, end), blink-caret 1s step-end infinite",
+        "scroll-watcher": "scroll-watcher linear",
       },
+      backgroundImage: {
+        oskm: "url('../../public/images/oskm.jpg')",
+        flywheel: "url('../../public/images/flywheel.jpg')",
+        "pemira-1": "url('../../public/images/pemira-1.png')",
+        "pemira-2": "url('../../public/images/pemira-2.png')",
+        prd: "url('../../public/images/prd.jpg')",
+        krai: "url('../../public/images/krai.jpg')",
+        moka: "url('../../public/images/moka.jpg')",
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
