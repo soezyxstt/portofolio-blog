@@ -16,7 +16,7 @@ export default function Home() {
     <main
       ref={mainRef}
       id='main'
-      className='flex min-h-dvh flex-col scroll-smooth items-center bg-black text-stone-200 *:flex snap-y snap-mandatory overflow-y-scroll h-full relative '
+      className='flex min-h-screen flex-col scroll-smooth items-center bg-black text-stone-200 *:flex snap-y snap-mandatory overflow-y-scroll h-full relative '
     >
       <CursorFollower mainRef={mainRef} />
       <Navbar />
@@ -54,7 +54,7 @@ export default function Home() {
         id='project'
         className='z-10 min-h-screen md:container flex-col pt-20 pb-8 md:pt-24 md:pb-10 w-full gap-6 snap-center'
       >
-        <h1 className='text-4xl font-bold pl-10 md:pl-0'>Activities</h1>
+        <h1 className='text-4xl font-bold pl-10 md:pl-0'>Projects</h1>
         <div className='flex w-full flex-1 overflow-x-scroll snap-x snap-mandatory'>
           <div className='flex md:w-full flex-row-reverse gap-4 md:gap-2 w-[600%] px-12 md:px-0'>
             <ProjectCard

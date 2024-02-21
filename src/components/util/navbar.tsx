@@ -22,7 +22,7 @@ const Navbar = () => {
       <NavigationMenu className='z-50'>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>
+            <NavigationMenuTrigger >
               <div className='text-lg'>Expertise</div>
             </NavigationMenuTrigger>
             <Expertise />
@@ -41,7 +41,7 @@ const Navbar = () => {
 
 const Contact = () => {
   return (
-    <NavigationMenuContent className=''>
+    <NavigationMenuContent className='' >
       <div className='flex p-6 flex-col gap-6'>
         <h1 className='text-xl gap-1 flex flex-col'>
           Social <Separator />
