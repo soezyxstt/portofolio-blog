@@ -43,7 +43,7 @@ export default function Home() {
       <CursorFollower mainRef={mainRef} />
       <Navbar />
       <TopTracker mainRef={mainRef} />
-      <div className='md:py-24 min-h-screen h-screen py-12 container flex-col gap-12 justify-center snap-center '>
+      <div className='md:py-24 min-h-dvh h-dvh py-12 container flex-col gap-12 justify-center snap-center '>
         <div className='absolute w-auto max-w-[65%] h-[60vh] z-0'>
           <img
             src='/images/g.png'
@@ -74,7 +74,7 @@ export default function Home() {
       </div>
       <div
         id='project'
-        className='z-10 min-h-screen max-h-screen h-screen md:container flex-col pt-8 pb-8 md:pt-10 md:pb-10 w-full gap-6 snap-center'
+        className='z-10 min-h-dvh max-h-dvh h-dvh md:container flex-col pt-8 pb-8 md:pt-10 md:pb-10 w-full gap-6 snap-center'
       >
         <h1 className='text-4xl font-bold pl-10 md:pl-0'>Projects</h1>
         <div className='flex h-full overflow-x-scroll snap-x snap-mandatory'>
