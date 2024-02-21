@@ -38,12 +38,12 @@ export default function Home() {
     <main
       ref={mainRef}
       id='main'
-      className='flex min-h-dvh flex-col scroll-smooth items-center bg-black text-stone-200 *:flex snap-y snap-mandatory overflow-y-scroll h-full relative '
+      className='flex flex-col scroll-smooth items-center bg-black text-stone-200 *:flex snap-y snap-mandatory overflow-y-scroll relative '
     >
       <CursorFollower mainRef={mainRef} />
       <Navbar />
       <TopTracker mainRef={mainRef} />
-      <div className='md:py-24 min-h-screen h-screen py-12 container flex-col gap-12 justify-center snap-center'>
+      <div className='md:py-24 min-h-screen h-screen py-12 container flex-col gap-12 justify-center snap-center border-b border-b-white'>
         <div className='absolute w-auto max-w-[65%] h-[60vh] z-0'>
           <img
             src='/images/g.png'
