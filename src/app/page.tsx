@@ -38,7 +38,7 @@ export default function Home() {
     <main
       ref={mainRef}
       id='main'
-      className='flex flex-col scroll-smooth items-center bg-black text-stone-200 *:flex snap-y snap-mandatory overflow-y-scroll relative '
+      className='flex h-full flex-col scroll-smooth items-center bg-black text-stone-200 *:flex snap-y snap-mandatory overflow-y-scroll relative '
     >
       <CursorFollower mainRef={mainRef} />
       <Navbar />
