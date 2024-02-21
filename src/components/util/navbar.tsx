@@ -16,7 +16,7 @@ import { ScrollArea } from '../ui/scroll-area';
 const Navbar = () => {
   return (
     <nav
-      className='flex flex-col fixed w-full h-16 top-0 justify-center px-6 md:px-12 text-gray-400 shadow-sm font-mono z-50 backdrop-blur'
+      className='flex flex-col transition-all fixed w-full h-16 duration-300 ease-in-out top-[calc(var(--navbar-height)-4rem)] justify-center px-6 md:px-12 text-gray-400 shadow-sm font-mono z-50 backdrop-blur'
       role='navigation'
     >
       <NavigationMenu className='z-50'>

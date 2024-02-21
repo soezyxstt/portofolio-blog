@@ -16,7 +16,11 @@ const TopTracker = ({ mainRef }: { mainRef: RefObject<HTMLDivElement> }) => {
   useEventListener('scroll', onScroll, mainRef);
 
   return (
-    <div ref={ref} id='top-tracker' className='fixed z-50 h-1 w-0 bg-stone-600 rounded-full top-16 left-0'></div>
+    <div
+      ref={ref}
+      id='top-tracker'
+      className='fixed z-50 h-1 w-0 bg-teal-600 top-[calc(var(--navbar-height))] transition-all ease-linear rounded-full left-0'
+    ></div>
   );
 };
 

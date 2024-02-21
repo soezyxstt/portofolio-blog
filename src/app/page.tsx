@@ -8,15 +8,37 @@ import ScrollMore from '@/components/util/scrollMore';
 import TopTracker from '@/components/util/topTracker';
 import { useRef } from 'react';
 import CursorFollower from '@/components/util/cursorFollower';
+import { useEventListener } from '@/hooks/useEventListener';
 
 export default function Home() {
   const mainRef = useRef<HTMLDivElement>(null);
+
+  useEventListener(
+    'scroll',
+    () => {
+      const root = document.documentElement || document.body;
+      const scroll = mainRef.current?.scrollTop || 0;
+
+      const current = Number(root.style.getPropertyValue('--scroll'));
+
+      if (current > scroll) {
+        root.style.setProperty('--navbar-height', '4rem')
+      }
+      else {
+        root.style.setProperty('--navbar-height', '0rem');
+      }
+      if (root) {
+        root.style.setProperty('--scroll', scroll.toString());
+      }
+    },
+    mainRef
+  );
 
   return (
     <main
       ref={mainRef}
       id='main'
-      className='flex min-h-screen flex-col scroll-smooth items-center bg-black text-stone-200 *:flex snap-y snap-mandatory overflow-y-scroll h-full relative '
+      className='flex min-h-dvh flex-col scroll-smooth items-center bg-black text-stone-200 *:flex snap-y snap-mandatory overflow-y-scroll h-full relative '
     >
       <CursorFollower mainRef={mainRef} />
       <Navbar />
@@ -52,7 +74,7 @@ export default function Home() {
       </div>
       <div
         id='project'
-        className='z-10 min-h-screen md:container flex-col pt-20 pb-8 md:pt-24 md:pb-10 w-full gap-6 snap-center'
+        className='z-10 min-h-screen md:container flex-col pt-8 pb-8 md:pt-10 md:pb-10 w-full gap-6 snap-center'
       >
         <h1 className='text-4xl font-bold pl-10 md:pl-0'>Projects</h1>
         <div className='flex w-full flex-1 overflow-x-scroll snap-x snap-mandatory'>
