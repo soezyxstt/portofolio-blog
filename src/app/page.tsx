@@ -43,7 +43,7 @@ export default function Home() {
       <CursorFollower mainRef={mainRef} />
       <Navbar />
       <TopTracker mainRef={mainRef} />
-      <div className='md:py-24 min-h-screen py-12 container flex-col gap-12 justify-center snap-center'>
+      <div className='md:py-24 min-h-screen h-screen py-12 container flex-col gap-12 justify-center snap-center'>
         <div className='absolute w-auto max-w-[65%] h-[60vh] z-0'>
           <img
             src='/images/g.png'
@@ -74,10 +74,10 @@ export default function Home() {
       </div>
       <div
         id='project'
-        className='z-10 min-h-screen md:container flex-col pt-8 pb-8 md:pt-10 md:pb-10 w-full gap-6 snap-center'
+        className='z-10 min-h-screen h-screen md:container flex-col pt-8 pb-8 md:pt-10 md:pb-10 w-full gap-6 snap-center'
       >
         <h1 className='text-4xl font-bold pl-10 md:pl-0'>Projects</h1>
-        <div className='flex w-full flex-1 overflow-x-scroll snap-x snap-mandatory'>
+        <div className='flex flex-1 overflow-x-scroll snap-x snap-mandatory'>
           <div className='flex md:w-full flex-row-reverse gap-4 md:gap-2 w-[600%] px-12 md:px-0'>
             <ProjectCard
               src='bg-pemira-2'
