@@ -231,11 +231,17 @@ export default function Main({ children }: { children?: React.ReactNode }) {
       }
 
       rightNav?.setAttribute('style', `right: 0;`);
+      rightNav?.classList.add('pointer-events-none')
       timeoutArray.push(
         setTimeout(() => {
           rightNav?.setAttribute('style', `right: -100%;`);
         }, 1000)
       );
+      timeoutArray.push(
+        setTimeout(() => {
+          rightNav?.classList.remove('pointer-events-none')
+        }, 100)
+      )
 
     },
     mainRef
