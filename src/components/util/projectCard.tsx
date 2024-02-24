@@ -35,7 +35,7 @@ const ProjectCard = ({
 
   const ref = useRef() as MutableRefObject<HTMLDivElement>;
   const inView = useInView<HTMLDivElement>(ref, { threshold: 1 });
-  const isInView = useDebounce(inView, 100);
+  const isInView = useDebounce(inView, 200);
 
   return (
     <div
@@ -50,7 +50,12 @@ const ProjectCard = ({
         className
       )}
     >
-      <div className='absolute group-hover:opacity-0 transition-opacity w-full h-full bottom-0 bg-gradient-to-b from-black/20 to-black/40'></div>
+      <div
+        className={cn(
+          'absolute group-hover:md:opacity-0 transition-opacity w-full h-full bottom-0 bg-gradient-to-b from-black/20 to-black/40',
+          isInView ? "opacity-0" : "opacity-1"
+        )}
+      ></div>
       <div
         className={cn(
           'absolute bottom-0 px-8 py-6 text-sm z-10 h-[40%] md:opacity-0 md:group-hover:opacity-100 transition-all md:delay-200 bg-gradient-to-t from-black/75 via-black/50 via-60% to-black/0 w-full flex flex-col justify-end',
