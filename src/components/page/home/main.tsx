@@ -219,19 +219,54 @@ export default function Main({ children }: { children?: React.ReactNode }) {
 
       const rightNav = document.getElementById('right-nav');
       if (scroll > 0 && scroll < 100 * vh) {
-        rightNav?.children[0].setAttribute('style', 'font-weight: 600; font-size: 1.5rem;');
-        rightNav?.children[1].setAttribute('style', 'font-weight: 400; font-size: 1.25rem;');
+        rightNav?.children[0].classList.add(
+          '!text-lg',
+          'md:!text-xl',
+          '!font-semibold',
+          'text-teal-600'
+        );
+        rightNav?.children[1].classList.remove(
+          '!text-lg',
+          'md:!text-xl',
+          '!font-semibold',
+          'text-teal-600'
+        );
       } else if (scroll >= 100 * vh && scroll < 200 * vh) {
-        rightNav?.children[0].setAttribute('style', 'font-weight: 400; font-size: 1.25rem;');
-        rightNav?.children[2].setAttribute('style', 'font-weight: 400; font-size: 1.25rem;');
-        rightNav?.children[1].setAttribute('style', 'font-weight: 600; font-size: 1.5rem;');
-      } else if (scroll >= 200 * vh ) {
-        rightNav?.children[1].setAttribute('style', 'font-weight: 400; font-size: 1.25rem;');
-        rightNav?.children[2].setAttribute('style', 'font-weight: 600; font-size: 1.5rem;');
+        rightNav?.children[1].classList.add(
+          '!text-lg',
+          'md:!text-xl',
+          '!font-semibold',
+          'text-teal-600'
+        );
+        rightNav?.children[0].classList.remove(
+          '!text-lg',
+          'md:!text-xl',
+          '!font-semibold',
+          'text-teal-600'
+        );
+        rightNav?.children[2].classList.remove(
+          '!text-lg',
+          'md:!text-xl',
+          '!font-semibold',
+          'text-teal-600'
+        );
+      } else if (scroll >= 200 * vh) {
+        rightNav?.children[2].classList.add(
+          '!text-lg',
+          'md:!text-xl',
+          '!font-semibold',
+          'text-teal-600'
+        );
+        rightNav?.children[1].classList.remove(
+          '!text-lg',
+          'md:!text-xl',
+          '!font-semibold',
+          'text-teal-600'
+        );
       }
 
       rightNav?.setAttribute('style', `right: 0;`);
-      rightNav?.classList.add('pointer-events-none')
+      rightNav?.classList.add('pointer-events-none');
       timeoutArray.push(
         setTimeout(() => {
           rightNav?.setAttribute('style', `right: -100%;`);
@@ -239,10 +274,9 @@ export default function Main({ children }: { children?: React.ReactNode }) {
       );
       timeoutArray.push(
         setTimeout(() => {
-          rightNav?.classList.remove('pointer-events-none')
+          rightNav?.classList.remove('pointer-events-none');
         }, 100)
-      )
-
+      );
     },
     mainRef
   );
