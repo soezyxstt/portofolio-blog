@@ -33,7 +33,7 @@ const AboutMe = ({
   return (
     <div
       id='about-me'
-      className='min-h-[300dvh] w-full h-[315dvh] px-6 md:px-0 snap-center md:py-6 overflow-hidden'
+      className='min-h-[315vh] w-full h-[315vh] px-6 md:px-0 snap-center md:py-6 overflow-hidden'
     >
       <h1 className='about-me text-4xl font-bold -rotate-90 fixed top-[50vh] -translate-y-[50%] hidden md:block opacity-0 transition-opacity z-0'>
         About Me
