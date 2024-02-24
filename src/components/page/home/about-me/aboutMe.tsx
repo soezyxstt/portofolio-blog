@@ -66,7 +66,7 @@ const AboutMe = ({
             top='md:top-[80vh]'
             img='/images/guntur.png'
           >
-            <p>Here's my personal information, use it properly!</p>
+            <p>{"Here's my personal information, use it properly!"}</p>
           </Card>
           <Card
             href='/?q=education'
@@ -75,7 +75,7 @@ const AboutMe = ({
             left='translate-x-[120%]'
             img='/images/itb.png'
           >
-            <p>Want to see my study journey? Check it out!</p>
+            <p>{"Want to see my study journey? Check it out!"}</p>
           </Card>
           <Card
             href='/?q=expertise'
@@ -84,7 +84,7 @@ const AboutMe = ({
             left='translate-x-[-120%] md:translate-x-0'
             img='/images/react.png'
           >
-            <p>Know more about things that I'm capable into</p>
+            <p>{"Know more about things that I'm capable into"}</p>
           </Card>
           <Card
             href='/?q=interest'
@@ -93,7 +93,7 @@ const AboutMe = ({
             left='translate-x-[120%]'
             img='/images/pingpong.png'
           >
-            <p>There's so much stuff that I love to do, yet here's the top</p>
+            <p>{"There's so much stuff that I love to do, yet here's the top"}</p>
           </Card>
           <Card
             href='/?q=work'
@@ -102,7 +102,7 @@ const AboutMe = ({
             left='translate-x-[-120%] md:translate-x-0'
             img='/images/recruitment.png'
           >
-            <p>Interested in working with me? Just text me </p>
+            <p>{"Interested in working with me? Just text me"} </p>
           </Card>
         </div>
         <Dialogs

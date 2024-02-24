@@ -69,9 +69,7 @@ const EduDialog = ({ query }: { query?: string }) => {
                 <div className='w-3 h-3 bg-white rounded-full aspect-square'></div>
               </div>
               <p className={cn('text-sm mr-7', quicksand.className)}>
-                Start from here, in a small village in Garut. I was born and
-                raised here. I learned a lot of things here, and I'm grateful
-                for that.
+                {"Start from here, in a small village in Garut. I was born and raised here. I learned a lot of things here, and I'm grateful for that."}
               </p>
             </div>
           </div>
@@ -92,9 +90,7 @@ const EduDialog = ({ query }: { query?: string }) => {
                 <div className='w-3 h-3 bg-white rounded-full aspect-square'></div>
               </div>
               <p className={cn('text-sm ml-7', quicksand.className)}>
-                The first time I study at the town. Quite exciting and a lot of
-                new things and cultures to know more about. That's a very good
-                experience for me.
+                {"The first time I study at the town. Quite exciting and a lot of new things and cultures to know more about. That's a very good experience for me."}
               </p>
             </div>
           </div>
@@ -113,9 +109,7 @@ const EduDialog = ({ query }: { query?: string }) => {
                 <div className='w-3 h-3 bg-white rounded-full aspect-square'></div>
               </div>
               <p className={cn('text-sm mr-7', quicksand.className)}>
-                The first time I knew about programming and technology. Such an
-                unforgettable moment for me. I grew up su much than any time
-                before.
+                {"The first time I knew about programming and technology. Such an unforgettable moment for me. I grew up su much than any time before."}
               </p>
             </div>
           </div>
@@ -136,9 +130,7 @@ const EduDialog = ({ query }: { query?: string }) => {
                 <div className='w-3 h-3 bg-white rounded-full aspect-square'></div>
               </div>
               <p className={cn('text-sm ml-7', quicksand.className)}>
-                A lot of new experiences, teamwork, and knowledge. Here I know
-                more about robotics and web development. I met a lot of great
-                people here.
+                {"A lot of new experiences, teamwork, and knowledge. Here I know more about robotics and web development. I met a lot of great people here."}
               </p>
             </div>
           </div>
