@@ -14,6 +14,7 @@ const CursorFollower = ({
   var mouseY = 0;
   var xp = 0;
   var yp = 0;
+  const arrayTimeout: NodeJS.Timeout[] = [];
 
   const moveCursor = (e: MouseEvent) => {
     mouseX = e.pageX - 12 + mainRef.current?.scrollLeft!;
@@ -32,6 +33,16 @@ const CursorFollower = ({
     }
   };
 
+  const hideCursorOnScroll = () => {
+    arrayTimeout.forEach((timeout) => clearTimeout(timeout));
+    hideCursor();
+    arrayTimeout.push(
+      setTimeout(() => {
+        showCursor();
+      }, 500)
+    );
+  }
+
   useInterval(() => {
     xp += (mouseX - xp) / 6;
     yp += (mouseY - yp) / 6;
@@ -44,10 +55,12 @@ const CursorFollower = ({
   useEventListener('mouseenter', showCursor, mainRef);
   useEventListener('mouseleave', hideCursor, mainRef);
   useEventListener('mousemove', moveCursor, mainRef);
+  useEventListener('scroll', hideCursorOnScroll, mainRef);
   if (isDekstop) {
     return (
       <div
         ref={ref}
+        id='cursor-follower'
         className='w-6 h-6 rounded-full border-[1.5px] border-teal-300 absolute top-72 left-40 z-[1000] pointer-events-none backdrop-blur-[1px] opacity-0 bg-teal-400/30'
       ></div>
     );

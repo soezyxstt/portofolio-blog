@@ -8,6 +8,8 @@
     --muted-text: #a3a3a3;
     --navbar-height: 4rem;
     --scroll: 0;
+    --vh: 0;
+    --about-me-top: 0;
   }
 }
 

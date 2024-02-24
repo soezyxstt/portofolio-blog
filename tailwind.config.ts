@@ -38,13 +38,33 @@ const config = {
         },
         "scroll-watcher": {
           to: {scale: "1 1"}
-        }
+        },
+        "timeline-to-l": {
+          from: { transform: "translateX(120%) translateY(3rem)" },
+          to: { transform: "translateX(0%)" },
+        },
+        "timeline-to-r": {
+          from: { transform: "translateX(-120%) translateY(3rem)" },
+          to: { transform: "translateX(0%)" },
+        },
+        "card-line": {
+          from: { height: "0", opacity: "0" },
+          to: { height: "20vh", opacity: "1"},
+        },
+        "card-line-reverse": {
+          to: { height: "0", opacity: "0"},
+          from: { height: "20vh", opacity: "1"},
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         typing: "typing 4s steps(40, end), blink-caret 1s step-end infinite",
         "scroll-watcher": "scroll-watcher linear",
+        "timeline-to-l": "timeline-to-l 0.8s ease-in-out",
+        "timeline-to-r": "timeline-to-r 0.8s ease-in-out",
+        "card-line": "card-line 0.6s ease-out",
+        "card-line-reverse": "card-line-reverse 0.6s ease-out",
       },
       backgroundImage: {
         oskm: "url('../../public/images/oskm.jpg')",
@@ -54,6 +74,11 @@ const config = {
         prd: "url('../../public/images/prd.jpg')",
         krai: "url('../../public/images/krai.jpg')",
         moka: "url('../../public/images/moka.jpg')",
+        js: "url('../../public/images/js.png')",
+        pingpong: "url('../../public/images/pingpong.png')",
+        game: "url('../../public/images/game.png')",
+        music: "url('../../public/images/music.png')",
+        react: "url('../../public/images/react.png')",
       }
     },
   },

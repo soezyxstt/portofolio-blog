@@ -1,4 +1,4 @@
-import { Merriweather, Rajdhani, Kanit } from 'next/font/google';
+import { Merriweather, Rajdhani, Kanit, Montserrat, Nunito_Sans } from 'next/font/google';
 import { Roboto_Mono, Quicksand } from 'next/font/google';
 
 const merriweather = Merriweather({
@@ -34,4 +34,16 @@ const quicksand = Quicksand({
   subsets: ['latin'],
 });
 
-export { merriweather, rajdhani, kanit, robotoMono, quicksand };
+const montserrat = Montserrat({
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+})
+
+const nunitoSans = Nunito_Sans({
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+});
+
+export { merriweather, rajdhani, kanit, robotoMono, quicksand, montserrat, nunitoSans };

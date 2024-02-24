@@ -12,6 +12,7 @@ import { Separator } from '../ui/separator';
 import { LuMailPlus, LuGithub } from 'react-icons/lu';
 import { FaInstagram, FaXTwitter } from 'react-icons/fa6';
 import { ScrollArea } from '../ui/scroll-area';
+import Image from 'next/image';
 
 const Navbar = () => {
   return (
@@ -114,7 +115,13 @@ const Expertise = () => {
         <div className='p-6 flex flex-col gap-8 max-w-[calc(100vw-4rem)]'>
           <div className='flex flex-col md:flex-row gap-8'>
             <div className='flex gap-8 items-stretch'>
-              <h1 className='bg-[#1c1c1e] p-3 rounded-lg w-32 md:w-40 flex items-center'>
+              <h1 className='bg-[#1c1c1e] [&>img]:hidden [&>img]:md:block px-4 py-8 rounded-lg min-w-32 md:w-40 flex flex-col justify-center md:justify-end gap-4 bg-gradient-to-br via-red-600 from-15% from-blue-700 to-yellow-400 via-70%'>
+                <Image
+                  src='/images/sw.png'
+                  alt='Solidworks'
+                  width={60}
+                  height={60}
+                />
                 3D Design
               </h1>
               <ul className='flex justify-center flex-col w-40 my-4'>
@@ -127,7 +134,27 @@ const Expertise = () => {
               </ul>
             </div>
             <div className='flex gap-8 items-stretch'>
-              <h1 className='bg-[#1c1c1e] p-3 rounded-lg w-32 md:w-40 flex items-center'>
+              <h1 className='px-4 py-8 rounded-lg min-w-32 [&>img]:hidden [&>img]:md:block md:w-40 flex-col flex justify-center md:justify-end bg-gradient-to-br from-green-700 from-15%  to-blue-600'>
+                <Image
+                  src='/images/sql.png'
+                  alt='Web Development'
+                  width={40}
+                  height={40}
+                  className='ml-auto'
+                />
+                <Image
+                  src='/images/nextjs.png'
+                  alt='Web Development'
+                  width={60}
+                  height={60}
+                />
+                <Image
+                  src='/images/nodejs.png'
+                  alt='Web Development'
+                  width={60}
+                  height={60}
+                  className='ml-auto mb-3'
+                />
                 Web Dev
               </h1>
               <ul className='flex justify-center flex-col gap-4 w-60 my-4'>
@@ -155,7 +182,27 @@ const Expertise = () => {
             </div>
           </div>
           <div className='flex gap-8 items-stretch col-span-2'>
-            <h1 className='bg-[#1c1c1e] p-3 rounded-lg w-32 md:w-40 flex items-center'>
+            <h1 className=' px-4 py-8 rounded-lg min-w-32 md:w-40 [&>img]:hidden [&>img]:md:block flex flex-col justify-center md:justify-end bg-gradient-to-br via-teal-600 from-15% via-60% from-green-600 to-cyan-700'>
+              <Image
+                src='/images/python.png'
+                alt='Python'
+                width={40}
+                height={40}
+                className='ml-auto'
+              />
+              <Image
+                src='/images/matlab.png'
+                alt='Matlab'
+                width={40}
+                height={40}
+              />
+              <Image
+                src='/images/cpp.png'
+                alt='C/C++'
+                width={40}
+                height={40}
+                className='ml-auto mb-4'
+              />
               Programming
             </h1>
             <ul className='flex justify-center flex-col gap-4 flex-1 my-4'>

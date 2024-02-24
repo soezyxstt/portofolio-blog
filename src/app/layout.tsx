@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/util/themeProvider';
-
-const inter = Inter({ subsets: ['latin'] });
+import { Toaster } from '@/components/ui/sonner';
+import { nunitoSans } from '@/lib/font';
 
 export const metadata: Metadata = {
   title: 'Soezyxst',
-  description: 'A personal blog by Soezyxst',
+  description: 'A personal blog by Adi',
 };
 
 export default function RootLayout({
@@ -17,13 +16,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${inter.className} overflow-auto h-dvh relative`}>
+      <body className={`${nunitoSans.className} overflow-auto h-dvh relative`}>
         <ThemeProvider
           attribute='class'
           defaultTheme='dark'
           disableTransitionOnChange
         >
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
