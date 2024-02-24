@@ -89,7 +89,7 @@ const Card = ({
             width={120}
             height={100}
             alt='arrow'
-            className=' object-cover w-full h-full [object-position:center_top]'
+            className=' object-cover w-full h-full [object-position:center_top] aspect-square'
             quality={100}
           />
         </div>
