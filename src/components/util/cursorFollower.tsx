@@ -15,10 +15,20 @@ const CursorFollower = ({
   var xp = 0;
   var yp = 0;
   const arrayTimeout: NodeJS.Timeout[] = [];
+  const timeoutArray: NodeJS.Timeout[] = [];
 
   const moveCursor = (e: MouseEvent) => {
     mouseX = e.pageX - 12 + mainRef.current?.scrollLeft!;
     mouseY = e.pageY - 12 + mainRef.current?.scrollTop!;
+    if (e.pageX > 0.9 * window.innerWidth) {
+      timeoutArray.forEach((timeout) => clearTimeout(timeout));
+      document.getElementById('right-nav')?.setAttribute('style', 'right: 0');
+      timeoutArray.push(
+        setTimeout(() => {
+          document.getElementById('right-nav')?.setAttribute('style', 'right: -100%');
+        }, 1000)
+      );
+    }
   };
 
   const showCursor = () => {
