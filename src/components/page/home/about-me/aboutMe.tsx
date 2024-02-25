@@ -33,7 +33,7 @@ const AboutMe = ({
   return (
     <div
       id='about-me'
-      className='min-h-[315vh] w-full h-[315vh] px-6 md:px-0 snap-start md:py-6 overflow-hidden'
+      className='min-h-[315dvh] w-full h-[315dvh] px-6 md:px-0 md:py-6 overflow-hidden'
     >
       <h1 className='about-me text-4xl font-bold -rotate-90 fixed top-[50vh] -translate-y-[50%] hidden md:block opacity-0 transition-opacity z-0'>
         About Me
@@ -45,7 +45,7 @@ const AboutMe = ({
       <div className='flex flex-col md:ml-[8vw] md:py-16 w-full'>
         <div className='md:hidden mt-10 mb-4 text-3xl font-bold'>About Me</div>
         <div className='md:grid grid-cols-2 md:gap-x-32 md:gap-y-10 relative w-full h-full'>
-          <div className='absolute text-4xl opacity-50 left-[50vh] hidden md:block top-[45vh] -translate-y-[50%]'>
+          <div className='absolute text-4xl opacity-50 left-[50vh] top-[45vh] -translate-y-[50%]'>
             Scroll to See More
           </div>
           <div

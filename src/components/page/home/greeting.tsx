@@ -9,10 +9,7 @@ const Greeting = () => {
       id='home'
       className='md:py-24 min-h-dvh h-dvh py-12 container flex-col gap-12 justify-center snap-center'
     >
-      <Meteors
-        number={20}
-        className=''
-      />
+      <Meteors number={20} />
       <div className='absolute w-auto max-w-[65%] h-[60vh] z-0'>
         <img
           src='/images/g.png'

@@ -90,7 +90,7 @@ const Card = ({
         <div className='absolute bottom-0 right-0 h-[65%] w-[65%] py-4 px-6 rounded-tl-xl bg-neutral-600/40 [box-shadow:4px_4px_20px_0_#00000044]'>
           <Image
             src={img ?? '/images/nextjs.svg'}
-            width={120}
+            width={100}
             height={100}
             alt='arrow'
             className=' object-cover w-full h-full [object-position:center_top] aspect-square'
