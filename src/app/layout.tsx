@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${nunitoSans.className}`}>
+      <body className={`${nunitoSans.className} overflow-auto h-dvh relative`}>
         <ThemeProvider
           attribute='class'
           defaultTheme='dark'

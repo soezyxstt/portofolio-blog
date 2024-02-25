@@ -1,15 +1,10 @@
 import { cn } from '@/lib/utils';
 import ScrollMore from '../../util/scrollMore';
 import { rajdhani } from '@/lib/font';
-import { Meteors } from '@/components/animation/meteor';
 
 const Greeting = () => {
   return (
-    <div
-      id='home'
-      className='md:py-24 min-h-dvh h-dvh py-12 container flex-col gap-12 justify-center snap-center'
-    >
-      <Meteors number={20} />
+    <div id='home' className='md:py-24 min-h-dvh h-dvh py-12 container flex-col gap-12 justify-center snap-center '>
       <div className='absolute w-auto max-w-[65%] h-[60vh] z-0'>
         <img
           src='/images/g.png'
@@ -21,7 +16,6 @@ const Greeting = () => {
           alt='cloud'
           className='opacity-30 w-auto h-full'
         />
-        <ScrollMore />
       </div>
       <div
         className={cn(
@@ -40,6 +34,7 @@ const Greeting = () => {
           {'Adi Haditya Nursyam'.toUpperCase()}
         </h1>
       </div>
+      <ScrollMore />
     </div>
   );
 };

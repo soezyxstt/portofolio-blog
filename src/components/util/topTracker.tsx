@@ -1,25 +1,25 @@
 'use client';
 
 import { useEventListener } from '@/hooks/useEventListener';
-import { useRef } from 'react';
+import { useRef, type RefObject } from 'react';
 
-const TopTracker = () => {
+const TopTracker = ({ mainRef }: { mainRef: RefObject<HTMLDivElement> }) => {
   const ref = useRef<HTMLDivElement>(null);
   const onScroll = () => {
-    if (ref.current) {
+    if (mainRef.current && ref.current) {
+      const main = mainRef.current;
       const tracker = ref.current;
-      const progress = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      const progress = main.scrollTop / (main.scrollHeight - main.clientHeight);
       tracker.style.width = `${progress * 100}%`;
     }
   }
-
-  useEventListener('scroll', onScroll);
+  useEventListener('scroll', onScroll, mainRef);
 
   return (
     <div
       ref={ref}
       id='top-tracker'
-      className='fixed z-50 h-1 w-0 bg-teal-600 top-[calc(var(--navbar-height))] transition-all ease-out rounded-full left-0'
+      className='fixed z-50 h-1 w-0 bg-teal-600 top-[calc(var(--navbar-height))] transition-all ease-linear rounded-full left-0'
     ></div>
   );
 };

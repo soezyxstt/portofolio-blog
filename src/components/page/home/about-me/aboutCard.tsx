@@ -54,11 +54,7 @@ const Card = ({
   if (isDekstop) {
     return (
       <Link
-        className={cn(
-          'rounded-xl about-card absolute bg-neutral-800/30 group h-fit w-fit',
-          top,
-          left
-        )}
+        className={cn('about-card rounded-xl opacity-0 absolute bg-neutral-800/30 group', top, left)}
         {...props}
       >
         <AboutCard className=' flex flex-col justify-between'>
@@ -90,7 +86,7 @@ const Card = ({
         <div className='absolute bottom-0 right-0 h-[65%] w-[65%] py-4 px-6 rounded-tl-xl bg-neutral-600/40 [box-shadow:4px_4px_20px_0_#00000044]'>
           <Image
             src={img ?? '/images/nextjs.svg'}
-            width={100}
+            width={120}
             height={100}
             alt='arrow'
             className=' object-cover w-full h-full [object-position:center_top] aspect-square'

@@ -17,12 +17,12 @@
   .center {
     @apply flex items-center justify-center;
   }
+
+  .timeline-scroll {
+    animation-timeline: scroll(block);
+  }
 }
 
 ::-webkit-scrollbar {
-  width: 0px;
-}
-
-html {
-  scroll-behavior: smooth;
+  width: 6px;
 }

@@ -53,7 +53,7 @@ const ProjectCard = ({
       <div
         className={cn(
           'absolute group-hover:md:opacity-0 transition-opacity w-full h-full bottom-0 bg-gradient-to-b from-black/20 to-black/40',
-          isInView ? "opacity-0 md:opacity-100" : "opacity-100"
+          isInView ? "opacity-0" : "opacity-1"
         )}
       ></div>
       <div
