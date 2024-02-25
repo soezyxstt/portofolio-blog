@@ -79,6 +79,7 @@ const config = {
         game: "url('../../public/images/game.png')",
         music: "url('../../public/images/music.png')",
         react: "url('../../public/images/react.png')",
+        car: "url('../../public/images/car.png')",
       }
     },
   },

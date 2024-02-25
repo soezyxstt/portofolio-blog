@@ -6,7 +6,7 @@ import { nunitoSans } from '@/lib/font';
 
 export const metadata: Metadata = {
   title: 'Soezyxst',
-  description: 'A personal blog by Adi',
+  description: 'A Portfolio Website of Adi',
 };
 
 export default function RootLayout({

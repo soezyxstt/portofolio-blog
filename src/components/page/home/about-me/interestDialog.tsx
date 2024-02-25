@@ -23,11 +23,11 @@ const InterestDialog = ({ query, interest }: { query?: string; interest?: string
         <div className='flex justify-center items-center'>
           <div className=' relative bg-cover bg-center aspect-square flex justify-center items-center rounded-xl border border-stone-500 w-32 bg-gradient-to-bl from-neutral-600 via-gray-800 to-zinc-900'>
             <img
-              src='/images/game.png'
+              src='/images/car.png'
               alt='music'
               className='absolute opacity-25'
             />
-            <h1>Gaming</h1>
+            <h1>Automotive</h1>
           </div>
         </div>
         <div className='flex justify-center items-center'>
