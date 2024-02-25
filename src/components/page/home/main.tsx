@@ -285,7 +285,7 @@ export default function Main({ children }: { children?: React.ReactNode }) {
     <main
       ref={mainRef}
       id='main'
-      className='flex cursor-none h-full flex-col scroll-smooth items-center bg-black text-stone-200 *:flex snap-y snap-mandatory overflow-y-scroll relative '
+      className='flex cursor-none h-full flex-col scroll-smooth items-center bg-black text-stone-200 *:flex overflow-y-scroll relative bg-bg'
     >
       <CursorFollower mainRef={mainRef} />
       <Navbar />

@@ -21,11 +21,11 @@ const AboutCard = ({
       tiltMaxAngleX={5}
       tiltMaxAngleY={5}
       glareEnable
-      glareColor='#57534eaa'
+      glareColor='#353331aa'
     >
       <div
         className={cn(
-          'border [box-shadow:0_0_9999px_2px_#115e5966] rounded-xl border-stone-400 h-40 p-8',
+          'border [box-shadow:0_0_50px_2px_#115e5944] rounded-xl border-stone-700 h-40 p-8',
           className
         )}
       >
@@ -54,7 +54,7 @@ const Card = ({
   if (isDekstop) {
     return (
       <Link
-        className={cn('about-card rounded-xl opacity-0 absolute bg-neutral-800/30 group', top, left)}
+        className={cn('about-card rounded-xl opacity-0 absolute bg-black/30 group', top, left)}
         {...props}
       >
         <AboutCard className=' flex flex-col justify-between'>
@@ -71,7 +71,7 @@ const Card = ({
   return (
     <Link
       className={cn(
-        'w-full [box-shadow:0_0_9999px_2px_#55555566] group border-[0.5px] overflow-hidden pt-6 border-stone-600/70 absolute mobile-about-card bg-gradient-to-b rounded-lg h-[40vh] from-neutral-800/70 to-stone-900/70 text-lg',
+        'w-full [box-shadow:0_0_20px_2px_#32419766] group border-[0.5px] overflow-hidden pt-6 border-stone-600/70 absolute mobile-about-card bg-gradient-to-b rounded-lg h-[40vh] from-stone-900/80 to-neutral-900/80 text-lg',
         top,
         left
       )}

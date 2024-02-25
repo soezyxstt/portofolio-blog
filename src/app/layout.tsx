@@ -3,6 +3,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/util/themeProvider';
 import { Toaster } from '@/components/ui/sonner';
 import { nunitoSans } from '@/lib/font';
+import Boxes from '@/components/boxes';
 
 export const metadata: Metadata = {
   title: 'Soezyxst',
@@ -16,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${nunitoSans.className} overflow-auto h-dvh relative`}>
+      <body className={`${nunitoSans.className} overflow-hidden h-dvh relative`}>
         <ThemeProvider
           attribute='class'
           defaultTheme='dark'
