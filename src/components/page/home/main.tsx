@@ -144,21 +144,11 @@ export default function Main({ children }: { children?: React.ReactNode }) {
             'style',
             `opacity: ${clamp((scroll - 160 * vh) / 40 / vh, 0, 1)};`
           );
-          cardLine[0].setAttribute(
-            'style',
-            `opacity: ${clamp((scroll - 190 * vh) / 30 / vh, 0, 1)};
-            height: ${clamp((scroll - 200 * vh) / 20 / vh, 0, 1) * 20}vh;`
-          );
         }
         if (scroll >= 220 * vh && scroll <= 260 * vh) {
           mobileAboutCard[1].setAttribute(
             'style',
             `opacity: ${clamp((scroll - 200 * vh) / 40 / vh, 0, 1)};`
-          );
-          cardLine[1].setAttribute(
-            'style',
-            `opacity: ${clamp((scroll - 220 * vh) / 40 / vh, 0, 1)};
-            height: ${clamp((scroll - 220 * vh) / 40 / vh, 0, 1) * 20}vh;`
           );
         }
         if (scroll >= 260 * vh && scroll <= 300 * vh) {
@@ -166,21 +156,11 @@ export default function Main({ children }: { children?: React.ReactNode }) {
             'style',
             `opacity: ${clamp((scroll - 240 * vh) / 60 / vh, 0, 1)};`
           );
-          cardLine[2].setAttribute(
-            'style',
-            `opacity: ${clamp((scroll - 260 * vh) / 40 / vh, 0, 1)};
-            height: ${clamp((scroll - 260 * vh) / 40 / vh, 0, 1) * 20}vh;`
-          );
         }
         if (scroll >= 300 * vh && scroll <= 360 * vh) {
           mobileAboutCard[3].setAttribute(
             'style',
             `opacity: ${clamp((scroll - 300 * vh) / 60 / vh, 0, 1)};`
-          );
-          cardLine[3].setAttribute(
-            'style',
-            `opacity: ${clamp((scroll - 300 * vh) / 60 / vh, 0, 1)};
-            height: ${clamp((scroll - 300 * vh) / 60 / vh, 0, 1) * 20}vh;`
           );
         }
         if (scroll >= 340 * vh && scroll <= 440 * vh) {
@@ -189,7 +169,40 @@ export default function Main({ children }: { children?: React.ReactNode }) {
             `opacity: ${clamp((scroll - 340 * vh) / 60 / vh, 0, 1)};`
           );
         }
-        if (scroll >= 200 * vh && scroll <= 260 * vh) {
+
+        if (scroll > 200 * vh) {
+          var batas = [150, 220, 290, 360];
+          if (dir === 'up') {
+            batas = batas.map((el) => el + 20);
+          }
+          cardLine[3].setAttribute(
+            'style',
+            `opacity: ${clamp((scroll - 300 * vh) / 60 / vh, 0, 1)};
+            height: ${clamp((scroll - batas[3] * vh) / 60 / vh, 0, 1) * 20}vh;`
+          );
+          cardLine[2].setAttribute(
+            'style',
+            `opacity: ${clamp((scroll - 260 * vh) / 40 / vh, 0, 1)};
+            height: ${clamp((scroll - batas[2] * vh) / 60 / vh, 0, 1) * 20}vh;`
+          );
+          cardLine[1].setAttribute(
+            'style',
+            `opacity: ${clamp((scroll - 220 * vh) / 40 / vh, 0, 1)};
+            height: ${clamp((scroll - batas[1] * vh) / 60 / vh, 0, 1) * 20}vh;`
+          );
+          cardLine[0].setAttribute(
+            'style',
+            `opacity: ${clamp((scroll - 190 * vh) / 30 / vh, 0, 1)};
+            height: ${clamp((scroll - batas[0] * vh) / 60 / vh, 0, 1) * 20}vh;`
+          );
+        } else {
+          cardLine[0].setAttribute('style', `height: 0; opacity: 0;`);
+          cardLine[1].setAttribute('style', `height: 0; opacity: 0;`);
+          cardLine[2].setAttribute('style', `height: 0; opacity: 0;`);
+          cardLine[3].setAttribute('style', `height: 0; opacity: 0;`);
+        }
+
+        if (scroll >= 195 * vh && scroll <= 260 * vh) {
           mobileAboutCard[1].classList.add('animate-timeline-to-l');
           mobileAboutCard[1].classList.remove('translate-x-[120%]');
         } else if (scroll >= 260 * vh && scroll <= 330 * vh) {
@@ -205,6 +218,9 @@ export default function Main({ children }: { children?: React.ReactNode }) {
           mobileAboutCard[2].classList.add('translate-x-[-120%]');
           mobileAboutCard[4].classList.add('animate-timeline-to-r');
           mobileAboutCard[4].classList.remove('translate-x-[-120%]');
+        } else if (scroll > 130 * vh && scroll < 195 * vh) {
+          mobileAboutCard[0].classList.add('animate-timeline-to-r');
+          mobileAboutCard[0].classList.remove('translate-x-[-120%]');
         } else {
           mobileAboutCard[1].classList.remove('animate-timeline-to-l');
           mobileAboutCard[2].classList.remove('animate-timeline-to-r');
@@ -214,6 +230,8 @@ export default function Main({ children }: { children?: React.ReactNode }) {
           mobileAboutCard[2].classList.add('translate-x-[-120%]');
           mobileAboutCard[3].classList.add('translate-x-[120%]');
           mobileAboutCard[4].classList.add('translate-x-[-120%]');
+          mobileAboutCard[0].classList.remove('animate-timeline-to-r');
+          mobileAboutCard[0].classList.add('translate-x-[-120%]');
         }
       }
 

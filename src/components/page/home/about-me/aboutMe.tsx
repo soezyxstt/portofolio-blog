@@ -64,6 +64,7 @@ const AboutMe = ({
             href='/?q=profile'
             title='Profile'
             top='md:top-[80vh]'
+            left='translate-x-[-120%] md:translate-x-0'
             img='/images/guntur.png'
           >
             <p>{"Here's my personal information, use it properly!"}</p>
