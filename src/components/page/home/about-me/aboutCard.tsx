@@ -54,7 +54,11 @@ const Card = ({
   if (isDekstop) {
     return (
       <Link
-        className={cn('about-card rounded-xl opacity-0 absolute bg-neutral-800/30 group', top, left)}
+        className={cn(
+          'about-card rounded-xl opacity-0 absolute bg-neutral-800/30 group',
+          top,
+          left
+        )}
         {...props}
       >
         <AboutCard className=' flex flex-col justify-between'>

@@ -6,6 +6,7 @@ import { useRef } from 'react';
 import CursorFollower from '@/components/util/cursorFollower';
 import { useEventListener } from '@/hooks/useEventListener';
 import RightNav from '@/components/util/rightNav';
+import Boxes from '@/components/boxes';
 
 export default function Main({ children }: { children?: React.ReactNode }) {
   const mainRef = useRef<HTMLDivElement>(null);
@@ -23,19 +24,19 @@ export default function Main({ children }: { children?: React.ReactNode }) {
       const current = Number(root.style.getPropertyValue('--scroll'));
       const dir = current > scroll ? 'up' : 'down';
 
-      if (current > scroll) {
+      if (dir === 'up') {
         root.style.setProperty('--navbar-height', '4rem');
       } else {
         root.style.setProperty('--navbar-height', '0rem');
       }
       if (root) {
         root.style.setProperty('--scroll', scroll.toString());
+        root.style.setProperty('--vh', vh.toString());
       }
-      root.style.setProperty('--vh', vh.toString());
 
       const typingName = document.getElementById('typing-name');
 
-      if (scroll > 90 * vh) {
+      if (scroll > 90 * vh && scroll < 150 * vh) {
         typingName?.classList.remove('animate-typing');
       } else {
         typingName?.classList.add('animate-typing');
@@ -53,7 +54,7 @@ export default function Main({ children }: { children?: React.ReactNode }) {
         document
           .getElementsByClassName('about-me')[0]
           .classList.add('opacity-100');
-      } else {
+      } else if (scroll >= 150 * vh) {
         document
           .getElementsByClassName('about-me')[0]
           .classList.remove('opacity-100');
@@ -218,65 +219,66 @@ export default function Main({ children }: { children?: React.ReactNode }) {
       }
 
       const rightNav = document.getElementById('right-nav');
-      if (scroll > 0 && scroll < 100 * vh) {
-        rightNav?.children[0].classList.add(
-          '!text-lg',
-          'md:!text-xl',
-          '!font-semibold',
-          'text-teal-600'
+      if (rightNav) {
+        if (scroll > 0 && scroll < 100 * vh) {
+          rightNav?.children[0].classList.add(
+            '!text-lg',
+            'md:!text-xl',
+            '!font-semibold',
+            'text-teal-600'
+          );
+          rightNav?.children[1].classList.remove(
+            '!text-lg',
+            'md:!text-xl',
+            '!font-semibold',
+            'text-teal-600'
+          );
+        } else if (scroll >= 100 * vh && scroll < 200 * vh) {
+          rightNav?.children[1].classList.add(
+            '!text-lg',
+            'md:!text-xl',
+            '!font-semibold',
+            'text-teal-600'
+          );
+          rightNav?.children[0].classList.remove(
+            '!text-lg',
+            'md:!text-xl',
+            '!font-semibold',
+            'text-teal-600'
+          );
+          rightNav?.children[2].classList.remove(
+            '!text-lg',
+            'md:!text-xl',
+            '!font-semibold',
+            'text-teal-600'
+          );
+        } else if (scroll >= 200 * vh) {
+          rightNav?.children[2].classList.add(
+            '!text-lg',
+            'md:!text-xl',
+            '!font-semibold',
+            'text-teal-600'
+          );
+          rightNav?.children[1].classList.remove(
+            '!text-lg',
+            'md:!text-xl',
+            '!font-semibold',
+            'text-teal-600'
+          );
+        }
+        rightNav?.setAttribute('style', `right: 0;`);
+        rightNav?.classList.add('pointer-events-none');
+        timeoutArray.push(
+          setTimeout(() => {
+            rightNav?.setAttribute('style', `right: -100%;`);
+          }, 1000)
         );
-        rightNav?.children[1].classList.remove(
-          '!text-lg',
-          'md:!text-xl',
-          '!font-semibold',
-          'text-teal-600'
-        );
-      } else if (scroll >= 100 * vh && scroll < 200 * vh) {
-        rightNav?.children[1].classList.add(
-          '!text-lg',
-          'md:!text-xl',
-          '!font-semibold',
-          'text-teal-600'
-        );
-        rightNav?.children[0].classList.remove(
-          '!text-lg',
-          'md:!text-xl',
-          '!font-semibold',
-          'text-teal-600'
-        );
-        rightNav?.children[2].classList.remove(
-          '!text-lg',
-          'md:!text-xl',
-          '!font-semibold',
-          'text-teal-600'
-        );
-      } else if (scroll >= 200 * vh) {
-        rightNav?.children[2].classList.add(
-          '!text-lg',
-          'md:!text-xl',
-          '!font-semibold',
-          'text-teal-600'
-        );
-        rightNav?.children[1].classList.remove(
-          '!text-lg',
-          'md:!text-xl',
-          '!font-semibold',
-          'text-teal-600'
+        timeoutArray.push(
+          setTimeout(() => {
+            rightNav?.classList.remove('pointer-events-none');
+          }, 100)
         );
       }
-
-      rightNav?.setAttribute('style', `right: 0;`);
-      rightNav?.classList.add('pointer-events-none');
-      timeoutArray.push(
-        setTimeout(() => {
-          rightNav?.setAttribute('style', `right: -100%;`);
-        }, 1000)
-      );
-      timeoutArray.push(
-        setTimeout(() => {
-          rightNav?.classList.remove('pointer-events-none');
-        }, 100)
-      );
     },
     mainRef
   );
@@ -289,6 +291,7 @@ export default function Main({ children }: { children?: React.ReactNode }) {
     >
       <CursorFollower mainRef={mainRef} />
       <Navbar />
+      <Boxes />
       <RightNav />
       <TopTracker mainRef={mainRef} />
       {children}
