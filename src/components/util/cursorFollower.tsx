@@ -1,13 +1,9 @@
 import { useEventListener } from '@/hooks/useEventListener';
 import { useInterval } from '@/hooks/useInterval';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
-import { use, useRef, type RefObject } from 'react';
+import { useRef } from 'react';
 
-const CursorFollower = ({
-  mainRef,
-}: {
-  mainRef: RefObject<HTMLDivElement>;
-}) => {
+const CursorFollower = () => {
   const isDekstop = useMediaQuery('(min-width: 1024px)');
   const ref = useRef<HTMLDivElement>(null);
   var mouseX = 0;
@@ -18,8 +14,8 @@ const CursorFollower = ({
   const timeoutArray: NodeJS.Timeout[] = [];
 
   const moveCursor = (e: MouseEvent) => {
-    mouseX = e.pageX - 12 + mainRef.current?.scrollLeft!;
-    mouseY = e.pageY - 12 + mainRef.current?.scrollTop!;
+    mouseX = e.pageX - 12
+    mouseY = e.pageY - 12 
     if (e.pageX > 0.9 * window.innerWidth) {
       timeoutArray.forEach((timeout) => clearTimeout(timeout));
       document.getElementById('right-nav')?.setAttribute('style', 'right: 0');
@@ -62,10 +58,10 @@ const CursorFollower = ({
     }
   }, 20);
 
-  useEventListener('mouseenter', showCursor, mainRef);
-  useEventListener('mouseleave', hideCursor, mainRef);
-  useEventListener('mousemove', moveCursor, mainRef);
-  useEventListener('scroll', hideCursorOnScroll, mainRef);
+  useEventListener('mouseenter', showCursor);
+  useEventListener('mouseleave', hideCursor);
+  useEventListener('mousemove', moveCursor);
+  useEventListener('scroll', hideCursorOnScroll);
   if (isDekstop) {
     return (
       <div

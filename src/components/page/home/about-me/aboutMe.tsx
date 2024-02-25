@@ -44,7 +44,7 @@ const AboutMe = ({
       />
       <div className='flex flex-col md:ml-[8vw] md:py-16 w-full'>
         <div className='md:hidden mt-10 mb-4 text-3xl font-bold'>About Me</div>
-        <div className='md:grid grid-cols-2 md:gap-x-32 md:gap-y-10 relative w-full h-full'>
+        <div className='md:grid grid-cols-2 md:gap-x-32 md:gap-y-10 relative w-full '>
           <div className='absolute text-4xl opacity-50 left-[50vh] top-[45vh] -translate-y-[50%]'>
             Scroll to See More
           </div>

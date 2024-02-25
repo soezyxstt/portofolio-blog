@@ -55,7 +55,7 @@ const Card = ({
     return (
       <Link
         className={cn(
-          'about-card rounded-xl opacity-0 absolute bg-neutral-800/30 group',
+          'rounded-xl about-card absolute bg-neutral-800/30 group h-fit w-fit',
           top,
           left
         )}

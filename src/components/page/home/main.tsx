@@ -2,24 +2,13 @@
 
 import Navbar from '@/components/util/navbar';
 import TopTracker from '@/components/util/topTracker';
-import { useRef } from 'react';
 import CursorFollower from '@/components/util/cursorFollower';
 import { useEventListener } from '@/hooks/useEventListener';
 import RightNav from '@/components/util/rightNav';
 import Boxes from '@/components/boxes';
 
 export default function Main({ children }: { children?: React.ReactNode }) {
-  const mainRef = useRef<HTMLDivElement>(null);
-  const root = document.documentElement || document.body;
-  const aboutMe = document.getElementsByClassName('about-me');
-  const aboutCard = document.getElementsByClassName('about-card');
-  const mobileAboutCard = document.getElementsByClassName('mobile-about-card');
-  const cardLine = document.getElementsByClassName('card-line');
-  const rightNav = document.getElementById('right-nav');
-  const typingName = document.getElementById('typing-name');
   const startCard = 282.5;
-
-  const vh = window.innerHeight / 100;
 
   const timeoutArray: NodeJS.Timeout[] = [];
 
@@ -28,8 +17,17 @@ export default function Main({ children }: { children?: React.ReactNode }) {
   }
 
   function onScroll() {
+    const vh = window.innerHeight / 100;
+    const root = document.documentElement || document.body;
+    const aboutMe = document.getElementsByClassName('about-me');
+    const aboutCard = document.getElementsByClassName('about-card');
+    const mobileAboutCard =
+      document.getElementsByClassName('mobile-about-card');
+    const cardLine = document.getElementsByClassName('card-line');
+    const rightNav = document.getElementById('right-nav');
+    const typingName = document.getElementById('typing-name');
     timeoutArray.forEach((timeout) => clearTimeout(timeout));
-    const scroll = mainRef.current?.scrollTop || 0;
+    const scroll = window.scrollY || document.body.scrollTop;
 
     const current = Number(root.style.getPropertyValue('--scroll'));
     const dir = current > scroll ? 'up' : 'down';
@@ -216,81 +214,78 @@ export default function Main({ children }: { children?: React.ReactNode }) {
       }
     }
 
-    if (rightNav) {
-      if (scroll > 0 && scroll < 100 * vh) {
-        rightNav?.children[0].classList.add(
-          '!text-lg',
-          'md:!text-xl',
-          '!font-semibold',
-          'text-teal-600'
-        );
-        rightNav?.children[1].classList.remove(
-          '!text-lg',
-          'md:!text-xl',
-          '!font-semibold',
-          'text-teal-600'
-        );
-      } else if (scroll >= 100 * vh && scroll < 200 * vh) {
-        rightNav?.children[1].classList.add(
-          '!text-lg',
-          'md:!text-xl',
-          '!font-semibold',
-          'text-teal-600'
-        );
-        rightNav?.children[0].classList.remove(
-          '!text-lg',
-          'md:!text-xl',
-          '!font-semibold',
-          'text-teal-600'
-        );
-        rightNav?.children[2].classList.remove(
-          '!text-lg',
-          'md:!text-xl',
-          '!font-semibold',
-          'text-teal-600'
-        );
-      } else if (scroll >= 200 * vh) {
-        rightNav?.children[2].classList.add(
-          '!text-lg',
-          'md:!text-xl',
-          '!font-semibold',
-          'text-teal-600'
-        );
-        rightNav?.children[1].classList.remove(
-          '!text-lg',
-          'md:!text-xl',
-          '!font-semibold',
-          'text-teal-600'
-        );
-      }
-      rightNav?.setAttribute('style', `right: 0;`);
-      rightNav?.classList.add('pointer-events-none');
-      timeoutArray.push(
-        setTimeout(() => {
-          rightNav?.setAttribute('style', `right: -100%;`);
-        }, 1000)
+    if (scroll > 0 && scroll < 100 * vh) {
+      rightNav?.children[0].classList.add(
+        '!text-lg',
+        'md:!text-xl',
+        '!font-semibold',
+        'text-teal-600'
       );
-      timeoutArray.push(
-        setTimeout(() => {
-          rightNav?.classList.remove('pointer-events-none');
-        }, 100)
+      rightNav?.children[1].classList.remove(
+        '!text-lg',
+        'md:!text-xl',
+        '!font-semibold',
+        'text-teal-600'
+      );
+    } else if (scroll >= 100 * vh && scroll < 200 * vh) {
+      rightNav?.children[1].classList.add(
+        '!text-lg',
+        'md:!text-xl',
+        '!font-semibold',
+        'text-teal-600'
+      );
+      rightNav?.children[0].classList.remove(
+        '!text-lg',
+        'md:!text-xl',
+        '!font-semibold',
+        'text-teal-600'
+      );
+      rightNav?.children[2].classList.remove(
+        '!text-lg',
+        'md:!text-xl',
+        '!font-semibold',
+        'text-teal-600'
+      );
+    } else if (scroll >= 200 * vh) {
+      rightNav?.children[2].classList.add(
+        '!text-lg',
+        'md:!text-xl',
+        '!font-semibold',
+        'text-teal-600'
+      );
+      rightNav?.children[1].classList.remove(
+        '!text-lg',
+        'md:!text-xl',
+        '!font-semibold',
+        'text-teal-600'
       );
     }
+    rightNav?.setAttribute('style', `right: 0;`);
+    rightNav?.classList.add('pointer-events-none');
+    timeoutArray.push(
+      setTimeout(() => {
+        rightNav?.setAttribute('style', `right: -100%;`);
+      }, 1000)
+    );
+    timeoutArray.push(
+      setTimeout(() => {
+        rightNav?.classList.remove('pointer-events-none');
+      }, 100)
+    );
   }
 
-  useEventListener('scroll', onScroll, mainRef);
+  useEventListener('scroll', onScroll);
 
   return (
     <main
-      ref={mainRef}
       id='main'
-      className='flex cursor-none h-full flex-col scroll-smooth items-center bg-black text-stone-200 *:flex snap-y overflow-y-scroll relative '
+      className='flex cursor-none h-full flex-col items-center bg-black text-stone-200 *:flex relative '
     >
-      <CursorFollower mainRef={mainRef} />
+      <CursorFollower />
       <Navbar />
       <Boxes />
       <RightNav />
-      <TopTracker mainRef={mainRef} />
+      <TopTracker />
       {children}
     </main>
   );

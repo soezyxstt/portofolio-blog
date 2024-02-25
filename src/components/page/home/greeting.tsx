@@ -21,6 +21,7 @@ const Greeting = () => {
           alt='cloud'
           className='opacity-30 w-auto h-full'
         />
+        <ScrollMore />
       </div>
       <div
         className={cn(
@@ -39,7 +40,6 @@ const Greeting = () => {
           {'Adi Haditya Nursyam'.toUpperCase()}
         </h1>
       </div>
-      <ScrollMore />
     </div>
   );
 };
