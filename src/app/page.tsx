@@ -1,18 +1,11 @@
-import AboutMe from '@/components/page/home/about-me/aboutMe';
-import Greeting from '@/components/page/home/greeting';
-import Main from '@/components/page/home/main';
-import Projects from '@/components/page/home/projects';
+"use client";
 
-export default function Home({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
+import Dashboard from '@/components/dashboard';
+
+export default function Home() {
   return (
-    <Main>
-      <Greeting />
-      <Projects />
-      <AboutMe searchParams={searchParams} />
-    </Main>
+    <main className='flex min-h-dvh flex-col items-center justify-between'>
+      <Dashboard />
+    </main>
   );
 }

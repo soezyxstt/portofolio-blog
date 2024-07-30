@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
+import { Quicksand } from 'next/font/google';
 import './globals.css';
-import { ThemeProvider } from '@/components/util/themeProvider';
-import { Toaster } from '@/components/ui/sonner';
-import { nunitoSans } from '@/lib/font';
-import Boxes from '@/components/boxes';
+import { name } from '@/data';
+import { cn } from '@/lib/utils';
+import Navbar from '@/components/navbar';
+
+const quicksand = Quicksand({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Soezyxst',
-  description: 'A Portfolio Website of Adi',
+  description: `Portfolio website for ${name}`,
 };
 
 export default function RootLayout({
@@ -17,15 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${nunitoSans.className} overflow-hidden h-dvh relative`}>
-        <ThemeProvider
-          attribute='class'
-          defaultTheme='dark'
-          disableTransitionOnChange
-        >
-          {children}
-          <Toaster />
-        </ThemeProvider>
+      <body className={cn(quicksand.className, 'bg-background text-white min-h-dvh')}>
+        <Navbar />
+        {children}
       </body>
     </html>
   );
