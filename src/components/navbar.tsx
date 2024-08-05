@@ -3,23 +3,24 @@
 import {title} from '@/data';
 import {motion, useScroll, useTransform} from 'framer-motion';
 import Link from 'next/link';
-import {type Dispatch, type SetStateAction, useRef, useState} from 'react';
+import {useState} from 'react';
 import Interpunct from './interpunct';
 import useWindowSize from "@/hooks/useWindowSize";
 
 export default function Navbar() {
   const {scrollY} = useScroll();
-  const {width, height} = useWindowSize();
+  const {height} = useWindowSize();
   const y = useTransform(scrollY, [0, 300], [164, 64]);
   const scale = useTransform(scrollY, [0, 300], [2, 1]);
   const opacity = useTransform(scrollY, [0, height ?? 500], [0, 1]);
+  const h = scrollY.get() > 300;
 
   return (
     <>
       <motion.nav
         initial={{y: 0}}
         transition={{duration: 0.2, type: 'tween'}}
-        style={{height: y, minHeight: 64}}
+        style={{height: h ? 64 : y, minHeight: 64}}
         className='w-full fixed top-0 flex justify-between md:px-main-md px-main items-center z-30'
       >
         <motion.div style={{opacity}} className="absolute z-0 bg-background w-full h-full top-0 left-0"></motion.div>
@@ -85,46 +86,6 @@ export default function Navbar() {
         </div>
       </motion.nav>
     </>
-  );
-}
-
-function Tab({
-               title,
-               index,
-               setPosition,
-             }: {
-  title: string;
-  index: number;
-  setPosition: Dispatch<
-    SetStateAction<{ width: number; left: number; opacity: number }>
-  >;
-}) {
-  const ref = useRef<HTMLAnchorElement>(null);
-  const w = ref.current?.offsetWidth!;
-  const l = ref.current?.offsetLeft!;
-  return (
-    <Link
-      href={`#${title.toLowerCase()}`}
-      ref={ref}
-      className='px-4 relative'
-      onMouseEnter={() => setPosition({left: l, width: w, opacity: 1})}
-      onMouseLeave={() => setPosition((pv) => ({...pv, opacity: 0}))}
-    >
-      {title}
-    </Link>
-  );
-}
-
-function Cursor({
-                  position,
-                }: {
-  position: { width: number; left: number; opacity: number };
-}) {
-  return (
-    <motion.div
-      animate={position}
-      className='h-0.5 bg-primary rounded-sm absolute bottom-0'
-    ></motion.div>
   );
 }
 
