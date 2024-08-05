@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={cn(montserrat.className, 'bg-background text-text min-h-dvh')}>
+      <body className={cn(montserrat.className, 'text-text')}>
         <Navbar />
         {children}
       </body>

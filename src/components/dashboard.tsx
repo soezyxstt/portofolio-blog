@@ -10,11 +10,12 @@ import {
   useMotionValue,
 } from 'framer-motion';
 import useMeasure from 'react-use-measure';
-import Interpunct from './interpunct';
+import Interpunct from './ui/interpunct';
 
 export default function Dashboard() {
   return (
     <div
+      id='home'
       className='min-h-dvh h-dvh overflow-hidden flex flex-col w-full justify-end relative pb-[20vh] bg-dashboard bg-cover bg-center bg-no-repeat'>
       {['I am a web developer', 'Creative software & 3D designer'].map(
         (text, index) => (
@@ -40,7 +41,7 @@ function Text({text, index}: { text: string; index: number }) {
   const lastWord = text.split(' ').slice(-1)[0];
   const colors: { [key: string]: string } = {
     designer: 'orange',
-    developer: 'royalblue',
+    developer: 'turquoise',
   };
   const step = index % 2 === 0 ? 1 : -1;
   const scope = useTimelineAnimation(
@@ -61,7 +62,7 @@ function Text({text, index}: { text: string; index: number }) {
           (_char, i) =>
             [
               `.div-${lastWord}-${i}`,
-              {scaleX: 1, color: 'transparent'},
+              {scaleX: 1, color: index === 1 ? 'transparent' : "white"},
               TRANSITION,
             ] as Animation
         ),
@@ -91,7 +92,7 @@ function Text({text, index}: { text: string; index: number }) {
       <div
         className={cn(
           'mix-blend-difference flex *:text-text',
-          '*:text-transparent [-webkit-text-stroke:_2px_white]'
+          index === 1 && '*:text-transparent [-webkit-text-stroke:_2px_white]'
         )}
         ref={scope}
         style={{gap: gap}}
