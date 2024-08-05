@@ -1,6 +1,5 @@
-import { cn } from '@/lib/utils';
-import { Space_Grotesk } from 'next/font/google';
-import { useEffect, useRef } from 'react';
+import {cn} from '@/lib/utils';
+import {useEffect, useRef} from 'react';
 import {
   animate,
   type DOMKeyframesDefinition,
@@ -11,77 +10,70 @@ import {
   useMotionValue,
 } from 'framer-motion';
 import useMeasure from 'react-use-measure';
-
-const font = Space_Grotesk({ subsets: ['latin'] });
+import Interpunct from './interpunct';
 
 export default function Dashboard() {
   return (
     <div
-      className={cn(
-        'min-h-dvh flex flex-col w-full justify-end mix-blend-difference overflow-x-hidden relative pb-32 md:pb-0',
-        font.className
+      className='min-h-dvh h-dvh overflow-hidden flex flex-col w-full justify-end relative pb-[20vh] bg-dashboard bg-cover bg-center bg-no-repeat'>
+      {['I am a web developer', 'Creative software & 3D designer'].map(
+        (text, index) => (
+          <div
+            className='relative flex text-[3rem] md:text-[5.5rem] text-nowrap text-transparent'
+            key={text}
+          >
+            {text}
+            <Text
+              text={text}
+              index={index}
+            />
+          </div>
+        )
       )}
-    >
-      {[
-        "I'm a software engineer",
-        "I'm a graphic designer",
-        "I'm a web developer",
-      ].map((text, index) => (
-        <div
-          className='relative flex text-[4.5rem] md:text-[8rem] text-nowrap uppercase text-black'
-          key={text}
-        >
-          {text}
-          <Text
-            text={text}
-            index={index}
-          />
-        </div>
-      ))}
+      <div className="absolute -bottom-4 w-full h-8 bg-background rounded-t-[50%]"></div>
     </div>
   );
 }
 
-function Text({ text, index }: { text: string; index: number }) {
-  const [ref, { width }] = useMeasure();
-  const lastword = text.split(' ').slice(-1)[0];
-  const colors: {[key: string]: string} = {
-    engineer: 'orange',
-    designer: 'magenta',
-    developer: 'cyan',
+function Text({text, index}: { text: string; index: number }) {
+  const [ref, {width}] = useMeasure();
+  const lastWord = text.split(' ').slice(-1)[0];
+  const colors: { [key: string]: string } = {
+    designer: 'orange',
+    developer: 'royalblue',
   };
+  const step = index % 2 === 0 ? 1 : -1;
   const scope = useTimelineAnimation(
     [
-      ...lastword
+      ...lastWord
         .split('')
         .map(
-          (_char, index) =>
+          (_char, i) =>
             [
-              `.div-${lastword}-${index}`,
-              { scaleX: -1, color: colors[lastword.toLowerCase()] },
+              `.div-${lastWord}-${i}`,
+              {scaleX: -1, color: colors[lastWord.toLowerCase()]},
               TRANSITION,
             ] as Animation
         ),
-      ...lastword
+      ...lastWord
         .split('')
         .map(
-          (_char, index) =>
+          (_char, i) =>
             [
-              `.div-${lastword}-${index}`,
-              { scaleX: 1, color: 'white' },
+              `.div-${lastWord}-${i}`,
+              {scaleX: 1, color: 'transparent'},
               TRANSITION,
             ] as Animation
         ),
     ],
     Infinity
   );
-  const step = index % 2 === 0 ? 1 : -1;
   const gap = 30;
   const xTranslation = useMotionValue(0);
-  const finalX = (-(width + gap) / 3) * step;
+  const finalX = -(width + gap) * step;
   useEffect(() => {
     const controls = animate(xTranslation, [0, finalX], {
-      duration: 25,
+      duration: 20,
       repeat: Infinity,
       repeatType: 'loop',
       ease: 'linear',
@@ -93,64 +85,69 @@ function Text({ text, index }: { text: string; index: number }) {
   return (
     <motion.div
       key={text}
-      ref={ref}
       className={`absolute bottom-0 ${index % 2 === 0 ? 'left-0' : 'right-0'}`}
-      style={{ x: xTranslation }}
-      whileHover={{ backgroundColor: 'maroon' }}
+      style={{x: xTranslation}}
     >
       <div
-        className='mix-blend-difference flex text-white '
+        className={cn(
+          'mix-blend-difference flex *:text-text',
+          '*:text-transparent [-webkit-text-stroke:_2px_white]'
+        )}
         ref={scope}
-        style={{ gap: gap }}
+        style={{gap: gap}}
       >
-        <p
+        <h2
           className='flex'
-          style={{ gap: gap }}
+          style={{gap: gap}}
+          ref={ref}
         >
           {text.split(' ').slice(0, -1).join(' ')}{' '}
           <div className='flex'>
-            {lastword.split('').map((char, index) => (
+            {lastWord.split('').map((char, index) => (
               <div
-                key={text + lastword + index}
-                className={`div-${lastword}-${index}`}
+                key={text + lastWord + index}
+                className={`div-${lastWord}-${index}`}
               >
                 {char}
               </div>
             ))}
           </div>
-        </p>
-        <p
+          <Interpunct/>
+        </h2>
+        <h2
           className='flex'
-          style={{ gap: gap }}
+          style={{gap: gap}}
         >
           {text.split(' ').slice(0, -1).join(' ')}{' '}
           <div className='flex'>
-            {lastword.split('').map((char, index) => (
+            {lastWord.split('').map((char, index) => (
               <div
-                key={text + lastword + index}
-                className={`div-${lastword}-${index}`}
+                key={text + lastWord + index}
+                className={`div-${lastWord}-${index}`}
               >
                 {char}
               </div>
             ))}
           </div>
-        </p>
-        <p
+          <Interpunct/>
+        </h2>
+        <h2
           className='flex'
-          style={{ gap: gap }}
+          style={{gap: gap}}
         >
           {text.split(' ').slice(0, -1).join(' ')}{' '}
           <div className='flex'>
-            {lastword.split('').map((char, index) => (
+            {lastWord.split('').map((char, index) => (
               <div
-                key={text + lastword + index}
-                className={`div-${lastword}-${index}`}
+                key={text + lastWord + index}
+                className={`div-${lastWord}-${index}`}
               >
                 {char}
               </div>
             ))}
           </div>
-        </p>
+          <Interpunct/>
+        </h2>
       </div>
     </motion.div>
   );
@@ -176,7 +173,7 @@ function useTimelineAnimation(keyframes: Keyframes[], count: number = 1) {
   useEffect(() => {
     mounted.current = true;
 
-    handleAnimate();
+    void handleAnimate();
 
     return () => {
       mounted.current = false;
@@ -204,5 +201,6 @@ function useTimelineAnimation(keyframes: Keyframes[], count: number = 1) {
       }
     }
   }
+
   return scope;
 }

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 const SCROLL_THRESHOLD = 10; // The number of pixels to count as a 'scroll'
 
 export function useScrollDirection(init: "up" | "down" = 'up') {
-  const [scrollDirection, setScrollDirection] = useState<"up" | "down">('up');
+  const [scrollDirection, setScrollDirection] = useState<"up" | "down">(init);
 
   useEffect(() => {
     let lastScrollY = window.pageYOffset;

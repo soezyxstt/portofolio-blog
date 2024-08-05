@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
-import { Quicksand } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import './globals.css';
 import { name } from '@/data';
 import { cn } from '@/lib/utils';
 import Navbar from '@/components/navbar';
 
-const quicksand = Quicksand({ subsets: ['latin'] });
+const montserrat = Montserrat({subsets: ['latin']});
 
 export const metadata: Metadata = {
-  title: 'Soezyxst',
+  title: 'adihnursyam',
   description: `Portfolio website for ${name}`,
 };
 
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={cn(quicksand.className, 'bg-background text-white min-h-dvh')}>
+      <body className={cn(montserrat.className, 'bg-background text-text min-h-dvh')}>
         <Navbar />
         {children}
       </body>
