@@ -20,7 +20,7 @@ export default function Navbar() {
         initial={{y: 0}}
         transition={{duration: 0.2, type: 'tween'}}
         style={{height: y, minHeight: 64}}
-        className='w-full fixed top-0 flex justify-between md:px-main-md px-main items-center z-30'
+        className='w-full fixed top-0 flex justify-between md:px-main-md px-main items-center z-50'
       >
         <motion.div style={{opacity}} className="absolute z-0 bg-background w-full h-full top-0 left-0"></motion.div>
         <div className='z-10 border-r border-border'>
@@ -68,7 +68,7 @@ function BurgerX() {
   return (
     <>
       <button
-        className={`group relative w-6 h-6 peer ${isExpanded && 'z-50'}`}
+        className={`group relative w-6 h-6 peer ${isExpanded && 'z-40'}`}
         aria-haspopup
         data-state={isExpanded ? 'open' : 'close'}
         onClick={() => setIsExpanded((pv) => !pv)}
@@ -83,7 +83,7 @@ function BurgerX() {
         className='peer-data-[state=open]:w-[100vw] h-[100vh] fixed backdrop-blur-sm left-0 top-0'
       ></div>
       <ul
-        className='bg-[#121519] fixed flex flex-col h-dvh sm:w-[50vw] py-6 md:py-10 max-w-[85vw] justify-between duration-500 gap-4 top-0 px-10 sm:px-14 md:px-20 ease-out transition-all peer-data-[state=open]:translate-x-0 right-0 translate-x-full'>
+        className='bg-[#121519] fixed flex flex-col z-50 h-dvh sm:w-[50vw] py-6 md:py-10 max-w-[85vw] justify-between duration-500 gap-4 top-0 px-10 sm:px-14 md:px-20 ease-out transition-all peer-data-[state=open]:translate-x-0 right-0 translate-x-full'>
         <div className=''></div>
         <motion.div
           initial={{opacity: 0}}

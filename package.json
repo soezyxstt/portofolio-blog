@@ -17,6 +17,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-use-measure": "^2.1.1",
+    "sharp": "^0.33.4",
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {

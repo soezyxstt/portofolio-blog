@@ -20,7 +20,7 @@ export default function Dashboard() {
       {['I am a web developer', 'Creative software & 3D designer'].map(
         (text, index) => (
           <div
-            className='relative flex text-[3rem] md:text-[5.5rem] text-nowrap text-transparent'
+            className='relative flex text-[3rem] md:text-[5.5rem] text-nowrap text-transparent z-10'
             key={text}
           >
             {text}
@@ -31,6 +31,7 @@ export default function Dashboard() {
           </div>
         )
       )}
+      <div className="absolute w-full h-full bg-background/20 top-0 left-0 z-0"></div>
       <div className="absolute -bottom-4 w-full h-8 bg-background rounded-t-[50%]"></div>
     </div>
   );
