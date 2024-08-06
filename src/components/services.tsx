@@ -14,7 +14,7 @@ export default function Services() {
     <>
       <div
         id='services'
-        className='h-max bg-background w-full min-h-screen relative overflow-x-hidden pt-32 space-y-10'
+        className='h-max bg-background w-full min-h-screen relative overflow-hidden pt-32 space-y-10'
       >
         <div className="md:pl-20 space-y-10 px-6">
           <motion.div initial={initial} whileInView={whileInView} transition={transition} className="md:space-y-6">
@@ -143,8 +143,9 @@ function Skills() {
               <Image
                 src={skill.logo}
                 alt={skill.title}
-                width={skill.title === 'Solidworks' ? overlappedW * 0.55 : isDesktop ? 32 : 24}
-                height={isDesktop ? 32 : 24}
+                width={skill.title === 'Solidworks' ? overlappedW * 0.55 : 32}
+                height={32}
+                className='text-background'
               />
               <h4>{skill.title === 'Solidworks' || skill.title}</h4>
             </div>
