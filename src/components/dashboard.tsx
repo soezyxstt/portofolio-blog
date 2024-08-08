@@ -11,19 +11,28 @@ import {
 } from 'framer-motion';
 import useMeasure from 'react-use-measure';
 import Interpunct from './ui/interpunct';
+import {useMediaQuery} from "@/hooks/useMediaQuery";
+import {ChevronUp} from "lucide-react";
 
 export default function Dashboard() {
+  function handleScroll() {
+    const services = document.getElementById('services');
+    if (services) {
+      services.scrollIntoView({behavior: 'smooth'});
+    }
+  }
+
   return (
     <div
       id='home'
-      className='min-h-dvh h-dvh overflow-hidden flex flex-col w-full justify-end relative pb-[20vh] bg-dashboard bg-cover bg-center bg-no-repeat'>
+      className='h-dvh overflow-hidden flex flex-col w-full justify-end relative pb-[20vh] bg-dashboard bg-cover bg-center bg-no-repeat'>
       {['I am a web developer', 'Creative software & 3D designer'].map(
         (text, index) => (
           <div
-            className='relative flex text-[3rem] md:text-[5.5rem] text-nowrap text-transparent z-10'
+            className='relative flex text-[3rem] md:text-[5.5rem] text-transparent z-10'
             key={text}
           >
-            {text}
+            {text[0]}
             <Text
               text={text}
               index={index}
@@ -32,13 +41,26 @@ export default function Dashboard() {
         )
       )}
       <div className="absolute w-full h-full bg-background/20 top-0 left-0 z-0"></div>
-      <div className="absolute -bottom-4 w-full h-8 bg-background rounded-t-[50%]"></div>
+      <div
+        onClick={handleScroll}
+        className='absolute left-1/2 -translate-x-1/2 text-sm md:text-base bottom-0 pb-2 md:pb-4 flex justify-center cursor-pointer transition hover:-translate-y-3 hover:text-text text-muted duration-500'>
+        Scroll
+        <div className="absolute top-0 -translate-y-full *:-translate-x-1/2">
+          <ChevronUp className='absolute bottom-0 animate-fading'
+                     style={{animationDelay: "0s", animationDuration: "1.5s"}}/>
+          <ChevronUp className='absolute bottom-3 md:bottom-4 animate-fading'
+                     style={{animationDelay: "0.5s", animationDuration: "1.5s"}}/>
+          <ChevronUp className='absolute bottom-6 md:bottom-8 animate-fading'
+                     style={{animationDelay: "1s", animationDuration: "1.5s"}}/>
+        </div>
+      </div>
     </div>
   );
 }
 
 function Text({text, index}: { text: string; index: number }) {
   const [ref, {width}] = useMeasure();
+  const isDesktop = useMediaQuery('(min-width: 768px)', {initializeWithValue: false});
   const lastWord = text.split(' ').slice(-1)[0];
   const colors: { [key: string]: string } = {
     designer: 'orange',
@@ -70,7 +92,7 @@ function Text({text, index}: { text: string; index: number }) {
     ],
     Infinity
   );
-  const gap = 30;
+  const gap = isDesktop ? 30 : 20;
   const xTranslation = useMotionValue(0);
   const finalX = -(width + gap) * step;
   useEffect(() => {
@@ -92,18 +114,17 @@ function Text({text, index}: { text: string; index: number }) {
     >
       <div
         className={cn(
-          'mix-blend-difference flex *:text-text',
-          index === 1 && '*:text-transparent [-webkit-text-stroke:_2px_white]'
+          'flex *:text-text',
+          index === 1 && '*:text-transparent [-webkit-text-stroke:_1px_white] md:[-webkit-text-stroke:_2px_white]'
         )}
         ref={scope}
         style={{gap: gap}}
       >
         <h2
-          className='flex'
-          style={{gap: gap}}
+          className='flex gap-[0.25em]'
           ref={ref}
         >
-          {text.split(' ').slice(0, -1).join(' ')}{' '}
+          {text.split(' ').slice(0, -1).map((word) => (<span key={text + word}>{word}</span>))}
           <div className='flex'>
             {lastWord.split('').map((char, index) => (
               <div
@@ -113,14 +134,13 @@ function Text({text, index}: { text: string; index: number }) {
                 {char}
               </div>
             ))}
+            <Interpunct style={{marginLeft: gap}}/>
           </div>
-          <Interpunct/>
         </h2>
         <h2
-          className='flex'
-          style={{gap: gap}}
+          className='flex gap-[0.25em]'
         >
-          {text.split(' ').slice(0, -1).join(' ')}{' '}
+          {text.split(' ').slice(0, -1).map((word) => (<span key={text + word}>{word}</span>))}
           <div className='flex'>
             {lastWord.split('').map((char, index) => (
               <div
@@ -130,14 +150,13 @@ function Text({text, index}: { text: string; index: number }) {
                 {char}
               </div>
             ))}
+            <Interpunct style={{marginLeft: gap}}/>
           </div>
-          <Interpunct/>
         </h2>
         <h2
-          className='flex'
-          style={{gap: gap}}
+          className='flex gap-[0.25em]'
         >
-          {text.split(' ').slice(0, -1).join(' ')}{' '}
+          {text.split(' ').slice(0, -1).map((word) => (<span key={text + word}>{word}</span>))}
           <div className='flex'>
             {lastWord.split('').map((char, index) => (
               <div
@@ -147,8 +166,8 @@ function Text({text, index}: { text: string; index: number }) {
                 {char}
               </div>
             ))}
+            <Interpunct style={{marginLeft: gap}}/>
           </div>
-          <Interpunct/>
         </h2>
       </div>
     </motion.div>

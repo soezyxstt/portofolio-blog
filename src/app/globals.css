@@ -64,7 +64,7 @@ h6 {
     box-sizing: border-box;
     position: relative;
     transform-origin: left;
-    animation: l2 1s infinite linear;
+    animation: l2 1s infinite linear 0.25s;
 }
 
 .loader::before,
@@ -90,15 +90,15 @@ h6 {
 }
 
 .loader-wrapper {
-    animation: scaleDown 1.5s forwards, fadeOut 1s linear 1s forwards;
-    -webkit-animation: scaleDown 1.5s forwards, fadeOut 1s linear 1s forwards;
-    -o-animation: scaleDown 1.5s forwards, fadeOut 1s linear 1s forwards;
+    animation: scaleDown 1.25s ease-in 0.75s forwards, fadeOut 1s ease-in 1s forwards;
+    -webkit-animation: scaleDown 1.25s ease-in 0.75s forwards, fadeOut 1s ease-in 1s forwards;
+    -o-animation: scaleDown 1.25s ease-in 0.75s forwards, fadeOut 1s ease-in 1s forwards;
 }
 
 .loading {
-    -webkit-animation: fadeOut 0.3s ease-out 1s forwards;
-    -o-animation: fadeOut 0.3s ease-out 1s forwards;
-    animation: fadeOut 0.3s ease-out 1s forwards;
+    -webkit-animation: fadeOut 1s ease-out 1s forwards;
+    -o-animation: fadeOut 1s ease-out 1s forwards;
+    animation: fadeOut 1s ease-out 1s forwards;
 }
 
 @keyframes l2 {

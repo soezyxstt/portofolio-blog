@@ -5,6 +5,8 @@ import Services from '@/components/services';
 import {useEffect, useState} from "react";
 import Loading from "@/app/loading";
 import Navbar from "@/components/navbar";
+import Projects from "@/components/projects";
+import ReactLenis from "lenis/react";
 
 export default function Home() {
   const [loading, setLoading] = useState(true)
@@ -18,10 +20,13 @@ export default function Home() {
 
   return (
     <main className='bg-background'>
-      {loading && <Loading/>}
-      <Navbar/>
-      <Dashboard/>
-      <Services/>
+      <ReactLenis root>
+        {loading && <Loading/>}
+        <Navbar/>
+        <Dashboard/>
+        <Services/>
+        <Projects/>
+      </ReactLenis>
     </main>
   );
 }

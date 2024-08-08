@@ -23,7 +23,7 @@ export default function Services() {
               className='text-text text-2xl md:text-5xl'>{"More than just design,"}</h2>
             <h2
               className='text-text text-2xl md:text-5xl'>{"It's"} <span>all about <FlipWords
-              words={["pleasing", "convenient", "appealing"]}/> experiences</span></h2>
+              words={["pleasing", "convenient", "appealing"]} className='text-text'/> experiences</span></h2>
           </motion.div>
           <Cards/>
         </div>

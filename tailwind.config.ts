@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss';
+import type {Config} from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -25,40 +25,54 @@ const config: Config = {
         'main-md': '4rem',
         main: '2rem',
       },
+      zIndex: {
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "100": "100",
+        front: "9999",
+      },
       keyframes: {
         'burger-x-up': {
           '0%': {
             transform: 'translateY(0.25rem)',
             height: 'calc(1.414*0.125rem)',
           },
-          '100%': { transform: 'translateY(0)' },
+          '100%': {transform: 'translateY(0)'},
         },
         'burger-x-down': {
           '0%': {
             transform: 'translateY(-0.25rem)',
             height: 'calc(1.414*0.125rem)',
           },
-          '100%': { transform: 'translateY(0)' },
+          '100%': {transform: 'translateY(0)'},
         },
         'burger-x-cw': {
-          '0%': { transform: 'translateY(0)' },
-          '100%': { transform: 'rotate(-45deg)' },
+          '0%': {transform: 'translateY(0)'},
+          '100%': {transform: 'rotate(-45deg)'},
         },
         'burger-x-ccw': {
-          '0%': { transform: 'translateY(0)' },
-          '100%': { transform: 'rotate(45deg)' },
+          '0%': {transform: 'translateY(0)'},
+          '100%': {transform: 'rotate(45deg)'},
         },
-      },
-      animation: {
-        'burger-x-up':
-          'burger-x-up 0.3s ease, burger-x-cw 0.3s ease 0.3s forwards',
-        'burger-x-down':
-          'burger-x-down 0.3s ease, burger-x-ccw 0.3s ease 0.3s forwards',
-        'burger-x-up-close':
-          'burger-x-up 0.3s ease 0.3s, burger-x-cw 0.3s ease 0s reverse',
-        'burger-x-down-close':
-          'burger-x-down 0.3s ease 0.3s, burger-x-ccw 0.3s ease 0s reverse',
-      },
+        'fade-out': {
+          '0%': {opacity: "1"},
+          '100%': {opacity: "0"},
+        },
+      }
+    },
+    animation: {
+      'burger-x-up':
+        'burger-x-up 0.3s ease, burger-x-cw 0.3s ease 0.3s forwards',
+      'burger-x-down':
+        'burger-x-down 0.3s ease, burger-x-ccw 0.3s ease 0.3s forwards',
+      'burger-x-up-close':
+        'burger-x-up 0.3s ease 0.3s, burger-x-cw 0.3s ease 0s reverse',
+      'burger-x-down-close':
+        'burger-x-down 0.3s ease 0.3s, burger-x-ccw 0.3s ease 0s reverse',
+      'fading': "fade-out 0.5s linear infinite",
     },
   },
   plugins: [],
