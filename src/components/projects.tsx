@@ -27,39 +27,51 @@ function Projects() {
   const marginBottom = useTransform(scrollYProgress, [0, 1], [1.75 * height!, 0]);
 
   // work
-  const fS = useTransform(scrollYProgress, [20 / totalHeight, 200 / totalHeight, 250 / totalHeight], [24, 1280, 24]);
+  const fS = useTransform(scrollYProgress, [20 / totalHeight, 200 / totalHeight, 250 / totalHeight],
+    [24, 800, 24]);
   const fontSize = useMotionTemplate`${fS}px`;
   const textOpacity = useTransform(scrollYProgress, [80 / totalHeight, 120 / totalHeight], [1, 0]);
+  const heightWork = useTransform(scrollYProgress, [20 / totalHeight, 200 / totalHeight, 250 / totalHeight],
+    [30, 1200, 30]);
 
-  const opacity = useTransform(scrollYProgress, [100 / totalHeight, 200 / totalHeight, 220 / totalHeight], [0, 1, 0]);
-  const scale = useTransform(scrollYProgress, [70 / totalHeight, 200 / totalHeight, 250 / totalHeight], [1, width! / 4, 1]);
+  const opacity = useTransform(scrollYProgress, [100 / totalHeight, 200 / totalHeight, 220 / totalHeight],
+    [0, 1, 0]);
+  const scale = useTransform(scrollYProgress, [70 / totalHeight, 200 / totalHeight, 250 / totalHeight],
+    [1, width! / 4, 1]);
 
   return (
     <>
       <div id='projects' ref={ref} className='bg-background'>
         <h2
-          className='w-full text-2xl sticky top-1/2 md:text-4xl whitespace-nowrap text-muted h-[15vh] md:h-[20vh] items-center flex justify-center z-20'>
-          <motion.span
-            style={{fontSize, opacity: textOpacity}}
-          >My Work
-          </motion.span>
-          <motion.div style={{scale, opacity}} className="absolute rounded-full w-4 h-4 bg-muted"></motion.div>
+          className='w-full text-2xl sticky top-1/2 md:text-4xl whitespace-nowrap text-muted items-center h-[15vh] md:h-[20vh] flex justify-center z-20'>
+          <motion.div style={{height: heightWork}} className="overflow-hidden relative w-screen">
+            <motion.span
+              style={{fontSize, opacity: textOpacity}}
+              className='absolute absolute-center'
+            >My Work
+            </motion.span>
+          </motion.div>
+          <div className="absolute w-screen h-screen overflow-hidden">
+            <motion.div style={{scale, opacity}} className="absolute rounded-full w-4 h-4 bg-muted left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"></motion.div>
+          </div>
         </h2>
         <div className='h-[200vh] w-full'/>
         <motion.div
-          className="flex items-center sticky max-w-full w-screen over justify-center top-1/2 z-10"
+          className="flex items-center sticky w-screen over justify-center top-1/2 z-10"
           style={{marginBottom}}>
-          <div className='absolute'>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <motion.img src={'/svg/pen-bot.svg'} alt='pen-bot' className='absolute bg-background z-[1]'
-                        style={{
-                          width: PEN_WIDTH * PEN_RATIO,
-                          bottom: (PEN_WIDTH * 50 / 669 - PEN_WIDTH * PEN_RATIO * 42 / 220) / 2,
-                          x: xTransPenBot
-                        }}/>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <motion.img src={'/svg/pen-top.svg'} alt='pen-top' className='sticky'
-                        style={{width: PEN_WIDTH, x: xTransPenTop}}/>
+          <div className='absolute overflow-x-hidden w-screen flex items-center' style={{height: PEN_WIDTH * 65 / 669}}>
+            <div className='absolute left-1/2 -translate-x-1/2'>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <motion.img src={'/svg/pen-bot.svg'} alt='pen-bot' className='absolute bg-background z-[1]'
+                          style={{
+                            width: PEN_WIDTH * PEN_RATIO,
+                            bottom: (PEN_WIDTH * 50 / 669 - PEN_WIDTH * PEN_RATIO * 42 / 220) / 2,
+                            x: xTransPenBot
+                          }}/>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <motion.img src={'/svg/pen-top.svg'} alt='pen-top' className='sticky'
+                          style={{minWidth: PEN_WIDTH, x: xTransPenTop}}/>
+            </div>
           </div>
         </motion.div>
         {webProjects.map((project, i) => <Card_3D key={i + project.url} index={i} {...project}
@@ -92,7 +104,7 @@ function Card_3D({title, url, index, src, scrollYProgress, totalHeight, width, h
 
   const rotateX = useTransform(progress, [0, 1], [12, 0]);
   const scale1 = useTransform(progress, [0, 1], [0.9, 1]);
-  const scale2 = useTransform(scrollYProgress, [start, end], [1, 0.2]);
+  const scale2 = useTransform(scrollYProgress, [start, end], [1, 0]);
   const opacity = useTransform(scrollYProgress, [start, end], [1, 0]);
   const x = useTransform(scrollYProgress, [start, end, end2], [0, 0.5 * (index % 2 === 0 ? 1 : -1) * width, 0]);
 

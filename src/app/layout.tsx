@@ -18,8 +18,8 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang='en' className='relative overflow-x-hidden'>
-      <body className={cn(montserrat.className, 'text-text max-w-[100vw]')}>
+    <html lang='en' className='overflow-x-hidden bg-background'>
+      <body className={cn(montserrat.className, 'text-text')}>
         {children}
       </body>
     </html>

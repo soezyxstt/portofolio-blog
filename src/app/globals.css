@@ -101,6 +101,10 @@ h6 {
     animation: fadeOut 1s ease-out 1s forwards;
 }
 
+.absolute-center {
+    @apply absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2;
+}
+
 @keyframes l2 {
     100% {
         transform: rotate(1turn)
