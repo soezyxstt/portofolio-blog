@@ -40,7 +40,7 @@ export default function Dashboard() {
           </div>
         )
       )}
-      <div className="absolute w-full h-full bg-background/20 top-0 left-0 z-0"></div>
+      <div className="absolute w-full h-full bg-background/40 top-0 left-0 z-0"></div>
       <div
         onClick={handleScroll}
         className='absolute left-1/2 -translate-x-1/2 text-sm md:text-base bottom-0 pb-2 md:pb-4 flex justify-center cursor-pointer transition hover:-translate-y-3 hover:text-text text-muted duration-500'>

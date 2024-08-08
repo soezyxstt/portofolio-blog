@@ -1,6 +1,6 @@
 'use client';
 
-import {title} from '@/data';
+import {contacts, title} from '@/data';
 import {motion, useScroll, useTransform} from 'framer-motion';
 import Link from 'next/link';
 import {useState} from 'react';
@@ -95,7 +95,7 @@ function BurgerX() {
         >
           <h2 className='text-3xl sm:text-5xl md:text-7xl'>Navigate To?</h2>
           <div className='flex flex-col'>
-            {['Home', 'Services', 'Projects'].map((title) => (
+            {['Home', 'Services', 'Projects', "Contacts"].map((title) => (
               <Link
                 href={`#${title.toLowerCase()}`}
                 key={title}
@@ -110,14 +110,16 @@ function BurgerX() {
         </motion.div>
         <div className='flex font-medium text-sm gap-2'>
           <Link
-            href='https://www.linkedin.com/in/adihnursyam'
+            href={'https://www.linkedin.com/in/' + contacts.linkedin}
+            target='_blank'
             className=''
           >
             linkedin
           </Link>
           <Interpunct className='text-cyan-500'/>
           <Link
-            href='https://instagram.com/adihnursyam'
+            href={'https://instagram.com/' + contacts.instagram}
+            target='_blank'
             className=''
           >
             instagram
@@ -125,13 +127,5 @@ function BurgerX() {
         </div>
       </ul>
     </>
-  );
-}
-
-function FlipWords({words, i}: { words: string[], i: number }) {
-  return (
-    <div>
-
-    </div>
   );
 }

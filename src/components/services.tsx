@@ -8,7 +8,7 @@ import PinContainer from "@/components/aceternity/3d-pin";
 
 const initial = {opacity: 0, y: 10};
 const whileInView = {opacity: 1, y: 0};
-const transition = {duration: 0.5, ease: 'easeInOut', delay: 0.3};
+const transition = {duration: 0.75, ease: 'easeInOut', delay: 0.25};
 
 export default function Services() {
   return (
@@ -17,8 +17,8 @@ export default function Services() {
         id='services'
         className='h-max bg-background w-full min-h-screen relative overflow-hidden pt-32 space-y-10'
       >
-        <div className="md:pl-20 space-y-10 md:space-y-16 px-6">
-          <motion.div initial={initial} whileInView={whileInView} transition={transition} className="md:space-y-6">
+        <div className="md:pl-20 space-y-10 md:space-y-16 px-6 [perpective:1000px]">
+          <motion.div initial={{opacity: 0, y: 10, x: '10%', rotateX: -30}} whileInView={{opacity: 1, x: 0, y: 0, rotateX: 0}} transition={transition} className="md:space-y-6">
             <h2
               className='text-text text-2xl md:text-5xl'>{"More than just design,"}</h2>
             <h2

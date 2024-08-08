@@ -34,6 +34,12 @@ const config: Config = {
         "100": "100",
         front: "9999",
       },
+      boxShadow: {
+        'project-md': '0px 0px 40px 20px hsla(0, 0%, 100%, 0.1)',
+        'project': '0px 0px 15px 7.5px hsla(0, 0%, 100%, 0.1)',
+        'contact': '0px 0px 5px 2.5px hsla(0, 0%, 100%, 0.1)',
+        'contact-md': '0px 0px 7.5px 5px hsla(0, 0%, 100%, 0.1)',
+      },
       keyframes: {
         'burger-x-up': {
           '0%': {

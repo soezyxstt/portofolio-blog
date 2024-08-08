@@ -3,14 +3,12 @@ import {motion, type MotionValue, useMotionTemplate, useScroll, useTransform} fr
 import {useRef} from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {useMediaQuery} from "@/hooks/useMediaQuery";
 
 const NUMBER_OF_PROJECTS = 5;
 
 function Projects() {
   const {width, height} = useWindowSize();
-  const isDesktop = useMediaQuery('(min-width: 768px)', {initializeWithValue: false});
-  const hProj = isDesktop ? 100 : 100;
+  const hProj = 100;
   const totalHeight = hProj * NUMBER_OF_PROJECTS + 175 + 200 + 20 + 200;
 
   const PEN_RATIO = 220 / 669;
@@ -43,7 +41,7 @@ function Projects() {
     <>
       <div id='projects' ref={ref} className='bg-background'>
         <h2
-          className='w-full text-2xl sticky top-1/2 md:text-4xl whitespace-nowrap text-muted items-center h-[15vh] md:h-[20vh] flex justify-center z-20'>
+          className='w-full text-2xl sticky top-1/2 pointer-events-none md:text-4xl whitespace-nowrap text-muted items-center h-[15vh] md:h-[20vh] flex justify-center z-front'>
           <motion.div style={{height: heightWork}} className="overflow-hidden relative w-screen">
             <motion.span
               style={{fontSize, opacity: textOpacity}}
@@ -52,12 +50,13 @@ function Projects() {
             </motion.span>
           </motion.div>
           <div className="absolute w-screen h-screen overflow-hidden">
-            <motion.div style={{scale, opacity}} className="absolute rounded-full w-4 h-4 bg-muted left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"></motion.div>
+            <motion.div style={{scale, opacity}}
+                        className="absolute rounded-full w-4 h-4 bg-muted left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"></motion.div>
           </div>
         </h2>
         <div className='h-[200vh] w-full'/>
         <motion.div
-          className="flex items-center sticky w-screen over justify-center top-1/2 z-10"
+          className="flex pointer-events-none items-center sticky w-screen over justify-center top-1/2 z-10"
           style={{marginBottom}}>
           <div className='absolute overflow-x-hidden w-screen flex items-center' style={{height: PEN_WIDTH * 65 / 669}}>
             <div className='absolute left-1/2 -translate-x-1/2'>
@@ -95,6 +94,8 @@ function Card_3D({title, url, index, src, scrollYProgress, totalHeight, width, h
   width: number,
   h: number
 }) {
+  const isEven = index % 2 === 0;
+  const isDesktop = width > 768;
   const ref = useRef<HTMLDivElement>(null)
   const {scrollYProgress: progress} = useScroll({target: ref, offset: ["0.5 1", "1 1"]})
 
@@ -102,29 +103,33 @@ function Card_3D({title, url, index, src, scrollYProgress, totalHeight, width, h
   const end = (600 + index * h) / totalHeight;
   const end2 = (700 + index * h) / totalHeight;
 
-  const rotateX = useTransform(progress, [0, 1], [12, 0]);
-  const scale1 = useTransform(progress, [0, 1], [0.9, 1]);
+  const rotateX = useTransform(progress, [0.5, 1], [20, 1]);
+  const scale1 = useTransform(progress, [0, 1], [0.7, 1]);
   const scale2 = useTransform(scrollYProgress, [start, end], [1, 0]);
   const opacity = useTransform(scrollYProgress, [start, end], [1, 0]);
-  const x = useTransform(scrollYProgress, [start, end, end2], [0, 0.5 * (index % 2 === 0 ? 1 : -1) * width, 0]);
+  const x = useTransform(scrollYProgress, [start, end, end2], [0, 0.5 * (isEven ? 1 : -1) * width, 0]);
 
   const scale = useMotionTemplate`min(${scale1}, ${scale2})`;
+  const skewY = useTransform(progress, [0, 0.5, 1], [0, 0, isEven ? -5 : 5]);
 
   return (
     <>
       <div
+        ref={ref}
         className={`sticky top-0 flex justify-center items-center h-screen`}
-        style={{perspective: '1000px'}}
-      >
+        style={{perspective: '1000px'}}>
         <motion.div
-          ref={ref}
-          style={{rotateX, scale, x, opacity}}
-          className={`md:h-[60vh] md:w-[calc(60vh*1.75)] w-[75vw] flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse justify-between'}`}>
-          <Image src={src} alt={title} width={750} height={750} quality={100}
-                 className='md:h-full object-cover object-center md:w-[80vh] w-[75vw]'/>
+          style={{rotateX, scale, x, opacity, transformStyle: 'preserve-3d'}}
+          className={`md:h-[60vh] md:w-[calc(60vh*1.75)] w-[75vw] flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse justify-between'}`}>
+          <motion.div className="aspect-[16/10] md:h-full w-[75vw]" style={{skewY}}
+                      whileHover={{translateX: isEven ? -10 : 10, translateY: -14}} transition={{duration: 1}}>
+            <Image src={src} alt={title} width={750} height={750} quality={100}
+                   className='object-cover object-center w-full h-full hover:shadow-project hover:md:shadow-project-md duration-1000 transition-all'/>
+          </motion.div>
           <div
-            className={`flex-col justify-between h-fit md:h-full gap-16 flex py-6 ${index % 2 === 0 ? 'md:pl-16' : 'md:pr-16'}`}>
-            <h4 className='uppercase text-sm text-muted' style={{letterSpacing: "0.2em"}}>Website</h4>
+            className={`flex-col justify-between h-fit md:h-full gap-16 flex py-6 ${isEven ? "md:pl-10" : "md:pr-10"}`}>
+            <h4 className='uppercase text-sm text-muted md:text-right'
+                style={{letterSpacing: "0.2em", textAlign: isDesktop ? 'left' : isEven ? "right" : "left"}}>Website</h4>
             <div className="flex flex-col gap-4">
               <h3 className='text-3xl'>{title}</h3>
               <Link href={url}

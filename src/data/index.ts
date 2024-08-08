@@ -3,7 +3,7 @@ export const title = "adihnursyam";
 export const contacts = {
   email: "soezyxst@gmail.com",
   instagram: "adihnursyam",
-  x: "soeyxsttt",
+  x: "soezyxsttt",
   github: "soezyxstt",
   linkedin: "adihnursyam",
 }

@@ -7,6 +7,8 @@ import Loading from "@/app/loading";
 import Navbar from "@/components/navbar";
 import Projects from "@/components/projects";
 import ReactLenis from "lenis/react";
+import Contacts from "@/components/contacts";
+import Footer from "@/components/footer";
 
 export default function Home() {
   const [loading, setLoading] = useState(true)
@@ -20,12 +22,14 @@ export default function Home() {
 
   return (
     <main className='bg-background'>
-      <ReactLenis root>
+      <ReactLenis root options={{lerp: 0.25}}>
         {loading && <Loading/>}
         <Navbar/>
         <Dashboard/>
         <Services/>
         <Projects/>
+        <Contacts/>
+        <Footer/>
       </ReactLenis>
     </main>
   );
