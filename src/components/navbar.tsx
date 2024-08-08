@@ -21,7 +21,7 @@ export default function Navbar() {
         initial={{y: 0}}
         transition={{duration: 0.2, type: 'tween'}}
         style={{height: y, minHeight: 64}}
-        className='w-full fixed top-0 flex justify-between md:px-main-md px-main items-center z-40'
+        className='w-full fixed top-0 flex justify-between md:px-main-md px-main items-center z-40 max-w-[100vw]'
       >
         <motion.div style={{opacity}} className="absolute z-0 bg-background w-full h-full top-0 left-0"></motion.div>
         <div className='z-10 border-r border-border'>
