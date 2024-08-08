@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className='relative overflow-x-hidden'>
-      <body className={cn(montserrat.className, 'text-text')}>
+      <body className={cn(montserrat.className, 'text-text max-w-[100vw]')}>
         {children}
       </body>
     </html>
