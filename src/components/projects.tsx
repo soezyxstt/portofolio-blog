@@ -103,7 +103,6 @@ function Card_3D({title, url, index, src, scrollYProgress, totalHeight, width, h
   const end = (600 + index * h) / totalHeight;
   const end2 = (700 + index * h) / totalHeight;
 
-  const rotateX = useTransform(progress, [0.5, 1], [20, 1]);
   const scale1 = useTransform(progress, [0, 1], [0.7, 1]);
   const scale2 = useTransform(scrollYProgress, [start, end], [1, 0]);
   const opacity = useTransform(scrollYProgress, [start, end], [1, 0]);
@@ -119,7 +118,7 @@ function Card_3D({title, url, index, src, scrollYProgress, totalHeight, width, h
         className={`sticky top-0 flex justify-center items-center h-screen`}
         style={{perspective: '1000px'}}>
         <motion.div
-          style={{rotateX, scale, x, opacity, transformStyle: 'preserve-3d'}}
+          style={{scale, x, opacity, transformStyle: 'preserve-3d'}}
           className={`md:h-[60vh] md:w-[calc(60vh*1.75)] w-[75vw] flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse justify-between'}`}>
           <motion.div className="aspect-[16/10] md:h-full w-[75vw]" style={{skewY}}
                       whileHover={{translateX: isEven ? -10 : 10, translateY: -14}} transition={{duration: 1}}>
